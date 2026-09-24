@@ -81,7 +81,7 @@ h1,h2,h3,h4,.disp{font-family:var(--disp);font-weight:700;line-height:1;letter-s
 .hero .ov{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,41,29,.25) 0%,rgba(20,41,29,.25) 40%,rgba(20,41,29,.92) 100%)}
 .hero .wrap{padding:180px 0 0;width:100%}
 .hero .in{width:min(var(--c),100% - 2*var(--gut));margin-inline:auto;padding-bottom:64px}
-.hero .kicker{color:var(--giallo)}
+.hero .kicker{color:#fff}
 .hero h1{margin:20px 0 24px;max-width:14ch}
 .hero .lead{color:#fff;opacity:.92;max-width:52ch;margin-bottom:36px}
 .hero .cta{display:flex;gap:16px;flex-wrap:wrap}
@@ -92,7 +92,7 @@ h1,h2,h3,h4,.disp{font-family:var(--disp);font-weight:700;line-height:1;letter-s
 .hero .fade{opacity:0;animation:fade .8s .35s ease forwards}
 @keyframes fade{to{opacity:1}}
 .strip{border-top:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
-.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-size:15px;flex-wrap:wrap}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px var(--gut);font-size:15px;flex-wrap:wrap}
 .strip .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--giallo);margin-right:10px;vertical-align:middle;animation:pulse 2s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 6px rgba(255,220,0,.25)}}
 .strip a{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
@@ -185,7 +185,7 @@ footer .bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;m
   .hdr{padding:14px 0}.hdr .logo{height:40px}.hdr nav,.hdr .cta-h{display:none}.burger{display:flex}
   .hero{min-height:100svh;min-height:720px}.hero .wrap{padding-top:120px}.hero h1{font-size:52px}
   .hero .cta{flex-direction:column}.hero .cta .btn{justify-content:center}
-  .strip .wrap{padding:14px 0}.strip a{display:none}
+  .strip .wrap{padding:14px var(--gut)}.strip a{display:none}
   .numeri{padding:40px 0}.numeri .wrap{grid-template-columns:1fr 1fr}.num b{font-size:56px}
   .sec-head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px}
   .cards{grid-template-columns:1fr}
