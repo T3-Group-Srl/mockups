@@ -60,6 +60,34 @@ section, footer { scroll-margin-top: 84px; }
 .btn-dark { background: #1B181C; color: #FCDD05; clip-path: var(--cut); }
 .btn-dark:hover { background: #3A353C; color: #FCDD05; }
 .btn-sm { min-height: 46px; padding: 0 20px; font-size: 15px; }
+.btn-y { position: relative; overflow: hidden; }
+.btn-y::after { content: ''; position: absolute; top: -20%; bottom: -20%; left: 0; width: 38%; background: rgba(255,255,255,.55); transform: translateX(-160%) skewX(-22deg); transition: transform .6s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+.btn-y:hover::after { transform: translateX(330%) skewX(-22deg); }
+.nav-a { position: relative; }
+.nav-a::after { content: ''; position: absolute; left: 14px; right: 14px; bottom: 6px; height: 2px; background: #FCDD05; transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.nav-a:hover::after, .nav-a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: #FCDD05; transform-origin: left; transform: scaleX(0); display: none; }
+.m-live { position: relative; }
+.m-live::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #D30214; }
+
+/* Kinetic band */
+.band { background: #1B181C; overflow: hidden; padding: 34px 0 30px; border-bottom: 1px solid #2E2A30; }
+.band-row { display: flex; align-items: center; gap: 36px; width: max-content; font-family: var(--disp); font-weight: 900; text-transform: uppercase; font-size: clamp(64px, 9vw, 132px); line-height: .95; white-space: nowrap; }
+.band-row.r1 { color: #FCDD05; }
+.band-row.r2 { color: transparent; -webkit-text-stroke: 2px #6E686F; margin-top: 6px; }
+.band-row svg { flex: none; }
+
+/* Hero layers */
+.hero-media { position: absolute; inset: -3%; transform: translate3d(calc(var(--mx, 0) * -34px), calc(var(--my, 0) * -22px), 0); transition: transform .9s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.hero-scroll { position: absolute; inset: 0; }
+.hero-title { transform: translate3d(calc(var(--mx, 0) * 14px), calc(var(--my, 0) * 8px), 0); transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.bolt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0; }
+.bolt path { fill: none; stroke: #FFE76A; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px #FCDD05) drop-shadow(0 0 18px rgba(252,221,5,.7)); stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+.bolt path.thin { stroke-width: 1.6; }
+.flash { position: absolute; inset: 0; z-index: 1; background: #FFF6C2; opacity: 0; pointer-events: none; mix-blend-mode: overlay; }
+.mani-title .w { display: inline-block; }
+.stats { position: relative; }
+.stats::before { content: ''; position: absolute; left: 0; right: 0; top: -3px; height: 3px; background: #1B181C; transform-origin: left; display: none; }
 
 /* Hero */
 .hero { position: relative; margin-top: -84px; min-height: 860px; display: flex; align-items: center; overflow: hidden; background: #000; }
@@ -245,7 +273,23 @@ section, footer { scroll-margin-top: 84px; }
 
 /* Load motion */
 @keyframes heroZoom { from { transform: scale(1.16); filter: brightness(.35); } to { transform: scale(1); filter: brightness(1); } }
-@keyframes flicker { 0%, 88%, 100% { filter: brightness(1); } 89% { filter: brightness(1.5) saturate(1.2); } 90% { filter: brightness(1.05); } 91.5% { filter: brightness(1.38) saturate(1.15); } 93.5% { filter: brightness(1); } }
+@keyframes flicker { 0%, 3%, 12%, 100% { filter: brightness(1); } 4% { filter: brightness(1.55) saturate(1.25); } 5% { filter: brightness(1.05); } 6.5% { filter: brightness(1.42) saturate(1.2); } 8.5% { filter: brightness(1); } }
+@keyframes strike { 0%, 3.4% { opacity: 0; stroke-dashoffset: 1400; } 3.6% { opacity: 1; } 5.2% { stroke-dashoffset: 0; } 6.6% { opacity: 1; stroke-dashoffset: 0; } 7% { opacity: .2; } 7.4% { opacity: .9; } 10%, 100% { opacity: 0; stroke-dashoffset: 0; } }
+@keyframes boltShow { 0%, 3.4% { opacity: 0; } 3.6%, 9% { opacity: 1; } 10%, 100% { opacity: 0; } }
+@keyframes flash { 0%, 3.6%, 100% { opacity: 0; } 4% { opacity: .55; } 5% { opacity: 0; } 6.4% { opacity: .35; } 7.4% { opacity: 0; } }
+@keyframes livePulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(3.2); opacity: 0; } }
+@keyframes heroOut { to { transform: scale(1.18) translateY(6%); filter: brightness(.55); } }
+@keyframes textOut { to { transform: translateY(-120px); opacity: 0; } }
+@keyframes drift1 { from { transform: translateX(4%); } to { transform: translateX(-38%); } }
+@keyframes drift2 { from { transform: translateX(-38%); } to { transform: translateX(4%); } }
+@keyframes slice { from { clip-path: polygon(0 16%, 100% 0, 100% 100%, 0 100%); } to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } }
+@keyframes wordUp { from { transform: translateY(70%) rotate(4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lineDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes progress { to { transform: scaleX(1); } }
+@keyframes popIn { from { transform: translateY(30px) scale(.9); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes imgReveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes tileIn { from { transform: scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fillText { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes rise { from { transform: translateY(108%); } to { transform: none; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @keyframes cue { 0% { transform: translateY(-110%); } 100% { transform: translateY(260%); } }
@@ -260,28 +304,65 @@ section, footer { scroll-margin-top: 84px; }
 @keyframes cardIn { from { transform: translateX(60px) scale(.94); opacity: .4; } to { transform: none; opacity: 1; } }
 
 @media (prefers-reduced-motion: no-preference) {
-  .anim .hero-img { animation: heroZoom 2.8s cubic-bezier(.2,.7,.2,1) both, flicker 7s 3s infinite; }
+  .anim .hero-img { animation: heroZoom 2.8s cubic-bezier(.2,.7,.2,1) both, flicker 7s 1.9s infinite; }
+  .anim .bolt { animation: boltShow 7s 1.9s infinite; }
+  .anim .bolt path { animation: strike 7s 1.9s infinite; }
+  .anim .bolt path.thin { animation-delay: 1.98s; }
+  .anim .flash { animation: flash 7s 1.9s infinite; }
   .anim .hero-title .line > span { animation: rise 1s cubic-bezier(.2,.8,.2,1) .25s both; }
   .anim .hero-title .line:nth-child(2) > span { animation-delay: .4s; }
   .anim .hero-sub { animation: fadeUp .8s .8s both; }
   .anim .hero-ctas { animation: fadeUp .8s .95s both; }
   .anim .scroll-cue i::after { animation: cue 1.8s cubic-bezier(.6,0,.4,1) infinite; }
+  .anim .m-live::after { animation: livePulse 1.6s ease-out infinite; }
   .anim .marquee-track { animation: marquee 40s linear infinite; }
   .anim .marquee:hover .marquee-track { animation-play-state: paused; }
   .anim .final-img { animation: flicker 9s 2s infinite; }
+  .anim .final .flash { animation: flash 9s 2s infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-media, .hero-title { transform: none !important; transition: none; }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .anim .hdr { animation: hdrSolid linear both; animation-timeline: scroll(root); animation-range: 0 260px; }
+    .anim .progress { display: block; animation: progress linear both; animation-timeline: scroll(root); }
+    .anim .hero-scroll { animation: heroOut linear both; animation-timeline: scroll(root); animation-range: 0 860px; }
+    .anim .hero-inner, .anim .scroll-cue { animation: textOut linear both; animation-timeline: scroll(root); animation-range: 60px 620px; }
+    .anim .band .r1 { animation: drift1 linear both; animation-timeline: view(); }
+    .anim .band .r2 { animation: drift2 linear both; animation-timeline: view(); }
+    .anim .mani { animation: slice linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .anim .mani-title .w { animation: wordUp linear both; animation-timeline: view(); }
+    .anim .mani-title .w:nth-child(1) { animation-range: entry 10% cover 28%; }
+    .anim .mani-title .w:nth-child(2) { animation-range: entry 18% cover 32%; }
+    .anim .mani-title .w:nth-child(3) { animation-range: entry 26% cover 36%; }
+    .anim .mani-title .w:nth-child(4) { animation-range: entry 34% cover 40%; }
+    .anim .mani-title .w:nth-child(5) { animation-range: entry 42% cover 44%; }
+    .anim .mani-title .w:nth-child(6) { animation-range: entry 50% cover 48%; }
+    .anim .stats { border-top-color: transparent; }
+    .anim .stats::before { display: block; animation: lineDraw linear both; animation-timeline: view(); animation-range: entry 20% cover 40%; }
     .anim .wipe { animation: wipe linear both; animation-timeline: view(); animation-range: entry 5% cover 35%; }
     .anim .count { animation: countUp linear both; animation-timeline: view(); animation-range: entry 15% cover 45%; }
     .anim .count .num { display: none; }
     .anim .count::before { counter-reset: c var(--n); content: counter(c); }
-    .anim .mega { animation: grow linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
     .anim .mp1 { animation: par1 linear both; animation-timeline: view(); }
     .anim .mp2 { animation: par2 linear both; animation-timeline: view(); }
     .anim .sticker { animation: spin linear both; animation-timeline: view(); }
     .anim .card { animation: cardIn linear both; animation-timeline: view(inline); animation-range: entry 0% entry 80%; }
+    .anim .ages li { animation: popIn linear both; animation-timeline: view(); }
+    .anim .ages li:nth-child(1) { animation-range: entry 10% cover 25%; }
+    .anim .ages li:nth-child(2) { animation-range: entry 20% cover 30%; }
+    .anim .ages li:nth-child(3) { animation-range: entry 30% cover 35%; }
+    .anim .ages li:nth-child(4) { animation-range: entry 40% cover 40%; }
+    .anim .nf-img, .anim .nl-img, .anim .nl-txt { animation: imgReveal linear both; animation-timeline: view(); animation-range: entry 10% cover 35%; }
+    .anim .ig-tile { animation: tileIn linear both; animation-timeline: view(); }
+    .anim .ig-tile:nth-child(1) { animation-range: entry 0% entry 60%; }
+    .anim .ig-tile:nth-child(2) { animation-range: entry 10% entry 70%; }
+    .anim .ig-tile:nth-child(3) { animation-range: entry 20% entry 80%; }
+    .anim .ig-tile:nth-child(4) { animation-range: entry 30% entry 90%; }
+    .anim .ig-tile:nth-child(5) { animation-range: entry 40% entry 100%; }
+    .anim .ig-tile:nth-child(6) { animation-range: entry 50% cover 55%; }
+    .anim .mega { color: transparent; -webkit-text-stroke: 2px #F7F3E8; background: linear-gradient(90deg, #F7F3E8 0 50%, transparent 50% 100%); background-size: 200% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; animation: grow linear both, fillText linear both; animation-timeline: view(), view(); animation-range: entry 0% cover 45%, cover 30% cover 60%; }
   }
 }
 
@@ -344,6 +425,7 @@ section, footer { scroll-margin-top: 84px; }
 <div class="{{rootClass}}" style="width: 100%; background: #1B181C;">
 
 <header class="hdr">
+<div class="progress" aria-hidden="true"></div>
 <div class="wrap hdr-in">
 <a class="brand" href="#top" aria-label="Nea Ostia Rugby, torna all'inizio">
 <img src="./assets/c7621d8424cb80e831650b77b807070e.svg" alt="">
@@ -390,7 +472,17 @@ section, footer { scroll-margin-top: 84px; }
 </header>
 
 <section class="hero" id="top">
+<div class="hero-media">
+<div class="hero-scroll">
 <img class="hero-img" src="./assets/100ffd76e5ca18bda3de1447d818ce90.jpg" alt="Il cinghiale del Nea Ostia Rugby, simbolo del club, avvolto dai fulmini">
+</div>
+</div>
+<svg class="bolt" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path d="M880 0 L925 88 L893 112 L962 214 L930 238 L1008 338 L984 352 L1062 430"></path>
+<path class="thin" d="M962 214 L1026 246 L1012 282 L1090 318 L1080 340 L1128 372"></path>
+<path class="thin" d="M1330 0 L1298 96 L1336 128 L1276 226 L1302 246 L1250 330"></path>
+</svg>
+<div class="flash" aria-hidden="true"></div>
 <div class="wrap hero-inner">
 <h1 class="hero-title disp"><span class="line"><span>Unisciti</span></span><span class="line"><span>al branco.</span></span></h1>
 <p class="hero-sub">Dal minirugby al Primo XV, a Ostia si impara a placcare, a sostenersi e a rialzarsi insieme. Il campo è il Giannattasio, la squadra sei tu.</p>
@@ -431,9 +523,23 @@ section, footer { scroll-margin-top: 84px; }
 </div>
 </section>
 
+<div class="band" aria-hidden="true">
+<div class="band-row r1">
+<span>Coraggio</span><svg width="54" height="34" viewBox="0 0 54 34"><ellipse cx="27" cy="17" rx="25" ry="14" fill="none" stroke="currentColor" stroke-width="4"></ellipse><path d="M14 17h26M22 12v10M27 12v10M32 12v10" stroke="currentColor" stroke-width="3"></path></svg>
+<span>Lealtà</span><svg width="54" height="34" viewBox="0 0 54 34"><ellipse cx="27" cy="17" rx="25" ry="14" fill="none" stroke="currentColor" stroke-width="4"></ellipse><path d="M14 17h26M22 12v10M27 12v10M32 12v10" stroke="currentColor" stroke-width="3"></path></svg>
+<span>Disciplina</span><svg width="54" height="34" viewBox="0 0 54 34"><ellipse cx="27" cy="17" rx="25" ry="14" fill="none" stroke="currentColor" stroke-width="4"></ellipse><path d="M14 17h26M22 12v10M27 12v10M32 12v10" stroke="currentColor" stroke-width="3"></path></svg>
+<span>Spirito di squadra</span><svg width="54" height="34" viewBox="0 0 54 34"><ellipse cx="27" cy="17" rx="25" ry="14" fill="none" stroke="currentColor" stroke-width="4"></ellipse><path d="M14 17h26M22 12v10M27 12v10M32 12v10" stroke="currentColor" stroke-width="3"></path></svg>
+<span>Coraggio</span><svg width="54" height="34" viewBox="0 0 54 34"><ellipse cx="27" cy="17" rx="25" ry="14" fill="none" stroke="currentColor" stroke-width="4"></ellipse><path d="M14 17h26M22 12v10M27 12v10M32 12v10" stroke="currentColor" stroke-width="3"></path></svg>
+<span>Lealtà</span>
+</div>
+<div class="band-row r2">
+<span>Unisciti al branco</span><span>/</span><span>Nea Ostia Rugby</span><span>/</span><span>Unisciti al branco</span><span>/</span><span>Nea Ostia Rugby</span><span>/</span><span>Unisciti al branco</span>
+</div>
+</div>
+
 <section class="mani" id="club">
 <div class="wrap">
-<h2 class="mani-title disp wipe">Qui non si gioca da soli.</h2>
+<h2 class="mani-title disp"><span class="w">Qui</span> <span class="w">non</span> <span class="w">si</span> <span class="w">gioca</span> <span class="w">da</span> <span class="w">soli.</span></h2>
 <div class="mani-row">
 <p class="mani-text">Coraggio, lealtà, disciplina e spirito di squadra. Sono le regole del campo e valgono anche fuori: a scuola, al lavoro, per le strade di Ostia.</p>
 <a class="tlink" href="#club">La storia del club</a>
@@ -471,11 +577,11 @@ section, footer { scroll-margin-top: 84px; }
 <div class="card-body"><p class="card-meta">Dai 5 ai 12 anni</p><h3 class="card-title">Minirugby</h3><p class="card-text">Martedì e giovedì alle 17:00. Il primo mese è gratis.</p><a class="card-link" href="#minirugby">Prenota la prova</a></div>
 </article>
 <article class="card card-y">
-<p class="card-big" aria-hidden="true">Sabbia, sole, mete.</p>
+<p class="card-big" aria-hidden="true" style="top: -77px; position: absolute">Sabbia, sole, mete.</p>
 <div class="card-body"><p class="card-meta">Da giugno a settembre</p><h3 class="card-title">Beach rugby</h3><p class="card-text">Tornei estivi sulla spiaggia di Ostia, aperti a tutti.</p><a class="card-link" href="#squadre">Scopri i tornei</a></div>
 </article>
 <article class="card card-d">
-<p class="card-big" aria-hidden="true">Old but gold.</p>
+<p class="card-big" aria-hidden="true" style="top: -88px; position: absolute">Old but gold.</p>
 <div class="card-body"><p class="card-meta">Over 35</p><h3 class="card-title">Wild Porks</h3><p class="card-text">Mercoledì sera, terzo tempo incluso. L'età è solo un numero di maglia.</p><a class="card-link" href="#squadre">Scopri la squadra</a></div>
 </article>
 </div>
@@ -597,6 +703,7 @@ section, footer { scroll-margin-top: 84px; }
 
 <section class="final" aria-label="Prova il rugby">
 <img class="final-img" src="./assets/2f4b47bc8eb6a484b2e74ccb5361b9cb.jpg" alt="">
+<div class="flash" aria-hidden="true"></div>
 <div class="wrap final-inner">
 <h2 class="mega disp">Esci dalla mischia.<br>Prova il rugby.</h2>
 <p>Il primo allenamento è gratuito, a qualsiasi età. Ti aspettiamo in campo.</p>
@@ -649,14 +756,34 @@ section, footer { scroll-margin-top: 84px; }
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"animations":{"editor":"boolean","default":true,"section":"Presentazione"},"$preview":{"width":1440,"height":7600}}'>
+<script type="text/x-dc" data-dc-script data-props='{"animations":{"editor":"boolean","default":true,"section":"Presentazione"},"$preview":{"width":1440,"height":8000}}'>
 class Component extends DCLogic {
   componentDidMount() {
     this.setState({ now: Date.now() });
     this.timer = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    const fine = window.matchMedia && window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches;
+    if (fine) {
+      this.onMove = (e) => {
+        if (this.raf) return;
+        this.raf = requestAnimationFrame(() => {
+          this.raf = null;
+          const r = document.documentElement;
+          if (this.props.animations === false) {
+            r.style.setProperty('--mx', '0');
+            r.style.setProperty('--my', '0');
+            return;
+          }
+          r.style.setProperty('--mx', (e.clientX / window.innerWidth - 0.5).toFixed(3));
+          r.style.setProperty('--my', (e.clientY / window.innerHeight - 0.5).toFixed(3));
+        });
+      };
+      window.addEventListener('pointermove', this.onMove, { passive: true });
+    }
   }
   componentWillUnmount() {
     clearInterval(this.timer);
+    if (this.onMove) window.removeEventListener('pointermove', this.onMove);
+    if (this.raf) cancelAnimationFrame(this.raf);
   }
   renderVals() {
     const s = this.state || {};
