@@ -6,6 +6,7 @@ Ogni cliente/progetto ha la sua cartella; l'URL da condividere è `https://mocku
 | Cartella | Cliente / progetto | URL |
 |---|---|---|
 | `giannattasio/` | Stadio Pasquale Giannattasio — redesign home | https://mockup.t3-group.it/giannattasio/ |
+| `nea-ostia-rugby/` | Nea Ostia Rugby — redesign home | https://mockup.t3-group.it/nea-ostia-rugby/ |
 
 ## Aggiungere un mockup
 1. Crea una cartella con un nome breve, minuscolo, senza spazi (es. `nome-cliente`).
