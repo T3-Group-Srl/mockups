@@ -785,7 +785,7 @@ h1,h2,h3{color:var(--nero);margin:0;line-height:1.2}
 .skip:focus{top:8px;color:#fff}
 
 /* demo bar */
-.demo-bar a{color:inherit;font-weight:700;margin-left:14px;text-underline-offset:3px}
+.demo-bar a{color:inherit;font-weight:700;margin:0 12px;text-underline-offset:3px}
 .demo-bar{background:var(--giallo);color:var(--nero);font-size:14px;font-weight:600;text-align:center;padding:6px 16px}
 
 /* slim header */
@@ -1100,7 +1100,7 @@ mark{background:#FFE7A8;color:inherit;padding:0 1px;border-radius:2px}
 <a class="skip" href="#cerca">Vai alla ricerca</a>
 <a class="skip" href="#impianti">Vai all'elenco degli impianti</a>
 
-<div class="demo-bar" role="note" id="demo-bar"><span><b>Proposta A</b>. <span id="demo-msg">Mockup dimostrativo: i dati provengono dalla D.D. QA/682/2025.</span></span> <a href="../proposta-b/">Vedi la proposta B</a> <a href="../">Tutte le proposte</a></div>
+<nav class="demo-bar" id="demo-bar" aria-label="Proposte"><a href="../proposta-b/">Vedi la proposta B</a><a href="../">Tutte le proposte</a></nav>
 
 <div class="slim">
   <div class="wrap">
@@ -4640,7 +4640,7 @@ function buildStatic(){
   var inatt = DATA.filter(function(d){return d.stato!=='attivo';}).length;
   $('f-attivi-help').textContent = inatt+' impianti risultano attualmente non attivi (chiusi, in riqualificazione o in attesa di gestore).';
   var nApprox=DATA.filter(function(d){return d.approx;}).length;
-  if(nApprox){ $('map-note').hidden=false; $('demo-msg').textContent='Mockup dimostrativo: i dati provengono dalla D.D. QA/682/2025'+(nApprox===DATA.length?', le posizioni sulla mappa sono indicative.':'. '+nApprox+' impianti hanno una posizione indicativa sulla mappa.'); }
+  if(nApprox){ $('map-note').hidden=false; }
 }
 
 function syncControls(){
