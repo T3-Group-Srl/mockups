@@ -3,43 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#001B54">
+<meta name="theme-color" content="#8E1F2F">
 <meta name="format-detection" content="telephone=no">
-<title>Quiz | Policlinico Universitario Campus Bio-Medico</title>
+<title>Cuore Giallorosso – The Quiz Experience | Campus Bio-Medico</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ---------- Palette e tipografia rilevate da policlinicocampusbiomedico.it ---------- */
+/* ---------- Identità "Cuore Giallorosso": rosso e giallo Roma, pannelli chiari ---------- */
 :root{
-  --cbm-red:#B4111A;
-  --cbm-red-dark:#8E0D14;
-  --cbm-navy:#001B54;
-  --cbm-ink:#292B2C;
-  --cbm-grey:#333333;
-  --cbm-cream:#F9F6F4;
-  --cbm-line:#E7E1DC;
-  --white:#fff;
-  --gold:#F2A900;          /* accento "giallorosso" per timer e punteggio */
-  --ok:#1E7B4A;
-  --ko:#B4111A;
-  --shadow:0 18px 40px -18px rgba(0,27,84,.35);
-  --hero-h:150px;
+  /* valori sulla pagina rossa */
+  --red:#8E1F2F;           /* rosso Roma */
+  --red-deep:#6C1423;
+  --gold:#F5C264;          /* giallo Roma */
+  --ink:#2A1216;           /* testo scuro su chiaro */
+  --text:#fff;
+  --muted:#F3D6DA;
+  --accent:var(--gold);
+  --card:rgba(0,0,0,.2);
+  --line:rgba(255,255,255,.24);
+  --btn:var(--gold);
+  --btn-ink:#3A0A12;
+  --btn-hover:#FFD68A;
+  --ghost-hover:rgba(255,255,255,.12);
+  --focus:#fff;
+  --ok:#1E8E5A;
+  --ko:#C8102E;
+  --radius:14px;
   --pad:16px;
   --sal:env(safe-area-inset-left,0px);
   --sar:env(safe-area-inset-right,0px);
   --sab:env(safe-area-inset-bottom,0px);
 }
+/* dentro i pannelli chiari gli stessi ruoli cambiano valore */
+.panel{
+  --panel:#FFF9F0;
+  --text:var(--ink);
+  --muted:#6B5458;
+  --accent:var(--red);
+  --card:#F6ECDF;
+  --line:#E0D0BF;
+  --btn:var(--red);
+  --btn-ink:#fff;
+  --btn-hover:var(--red-deep);
+  --ghost-hover:#F6ECDF;
+  --focus:var(--ink);
+}
 
 /* ================= BASE = SMARTPHONE (da 320px) ================= */
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--red)}
 html,body{margin:0}
 body{
-  font-family:Roboto,-apple-system,"Segoe UI",sans-serif;
-  font-size:16px;
-  color:var(--cbm-ink);
-  background:var(--cbm-cream);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.5;
+  color:var(--text);
+  background:radial-gradient(120% 70% at 85% 0,#A8263C 0,var(--red) 50%,#771829 100%);
   -webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
   display:flex;flex-direction:column;
@@ -47,313 +66,315 @@ body{
   overscroll-behavior-y:none;
 }
 button{font-family:inherit;touch-action:manipulation}
+p{margin:0 0 12px}
+.muted{color:var(--muted);font-size:14px}
+.num{font-variant-numeric:tabular-nums}
 
 /* ---------- Header ---------- */
 .site-header{
-  background:var(--white);
-  border-bottom:1px solid var(--cbm-line);
   padding:10px calc(var(--pad) + var(--sar)) 10px calc(var(--pad) + var(--sal));
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-bottom:1px solid var(--line);
 }
-.brand{display:flex;align-items:center;min-width:0;text-decoration:none;color:var(--cbm-navy)}
-.brand img{height:30px;width:auto;max-width:100%;display:block}
-.brand-fallback{display:none;font-size:10px;line-height:1.25;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-.brand-fallback span{display:block;font-weight:400}
-.tag{
-  flex:none;background:var(--cbm-red);color:#fff;font-weight:700;font-size:10px;
-  letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;white-space:nowrap;
-}
+/* il logo del Policlinico è blu su trasparente: resta leggibile su una targhetta bianca */
+.brand{display:flex;align-items:center;flex:none;background:#fff;border-radius:10px;padding:7px 12px;text-decoration:none;color:#001B54}
+/* il PNG ha un terzo di spazio vuoto a destra: lo si ritaglia */
+.brand img{height:38px;aspect-ratio:3.75;object-fit:cover;object-position:left center;display:block}
+.brand-fallback{display:none;font-size:11px;line-height:1.25;font-weight:700}
+.brand-fallback span{display:block;font-weight:500}
+.brand:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wordmark{font-weight:800;font-size:13px;line-height:1.05;letter-spacing:.02em;text-transform:uppercase;text-align:right;visibility:hidden}
+.wordmark span{display:block;color:var(--gold)}
+body:not([data-screen="s-start"]) .wordmark{visibility:visible}
 
-/* ---------- Hero / stage ---------- */
+/* ---------- Stage ---------- */
 .stage{
-  flex:1;position:relative;
-  padding:18px calc(12px + var(--sar)) 28px calc(12px + var(--sal));
-  background:
-    linear-gradient(180deg,var(--cbm-navy) 0,var(--cbm-navy) var(--hero-h),transparent var(--hero-h)),
-    var(--cbm-cream);
+  flex:1;position:relative;overflow:hidden;
+  padding:24px calc(var(--pad) + var(--sar)) 32px calc(var(--pad) + var(--sal));
 }
-.stage::before{ /* fascia diagonale giallorossa */
-  content:"";position:absolute;left:0;right:0;top:0;height:var(--hero-h);pointer-events:none;
-  background:
-    linear-gradient(115deg,transparent 0 72%,rgba(180,17,26,.9) 72% 86%,transparent 86%),
-    linear-gradient(115deg,transparent 0 88%,rgba(242,169,0,.9) 88% 92%,transparent 92%);
+.stage::before{ /* cerchi concentrici della cover, appena accennati */
+  content:"";position:absolute;right:-140px;top:-140px;width:520px;height:520px;pointer-events:none;
+  background:repeating-radial-gradient(circle,transparent 0 36px,rgba(245,194,100,.22) 36px 37px,transparent 37px 72px,rgba(255,255,255,.1) 72px 73px);
+  -webkit-mask-image:radial-gradient(circle,#000 20%,transparent 70%);mask-image:radial-gradient(circle,#000 20%,transparent 70%);
 }
-.wrap{max-width:720px;margin:0 auto;position:relative}
-.eyebrow{color:#fff;opacity:.8;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
-.title{color:#fff;font-weight:300;font-size:26px;line-height:1.1;margin:0 0 14px;max-width:70%}
-.title b{font-weight:900;display:block}
-/* durante la partita l'intestazione si compatta per lasciare spazio alle risposte */
-body.playing{--hero-h:64px}
-body.playing .eyebrow,body.playing .title{display:none}
-body.playing .stage{padding-top:12px}
-
-.card{
-  background:#fff;border-top:4px solid var(--cbm-red);
-  box-shadow:var(--shadow);padding:18px var(--pad) 20px;
-}
-.screen{display:none;animation:rise .3s ease both}
+.wrap{max-width:640px;margin:0 auto;position:relative}
+.screen{display:none}
 .screen.active{display:block}
-@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-h2{font-size:20px;font-weight:700;color:var(--cbm-navy);margin:0 0 8px}
-p{line-height:1.5;margin:0 0 12px}
-.muted{color:#6b6f72;font-size:13px}
+/* ---------- Accesso ---------- */
+.pill{
+  display:inline-block;background:var(--red-deep);color:var(--gold);
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 12px;border-radius:8px;margin-bottom:18px;
+}
+.title{font-weight:800;font-size:clamp(36px,12.5vw,88px);line-height:.95;letter-spacing:-.025em;text-transform:uppercase;margin:0}
+.title span{display:block;color:var(--gold)}
+.pulse{display:block;width:100%;height:40px;margin:14px 0 18px;overflow:visible}
+.pulse path{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.4s .2s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.lead{font-size:17px;color:var(--muted);max-width:34em;margin-bottom:20px}
+.lead b{color:var(--text);font-weight:600}
 
-/* ---------- Regole (lista verticale su mobile) ---------- */
-.rules{list-style:none;padding:0;margin:14px 0 18px;display:grid;gap:8px;grid-template-columns:1fr}
-.rules li{background:var(--cbm-cream);padding:10px 12px;display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.3}
-.rules b{flex:none;min-width:62px;font-size:22px;font-weight:900;color:var(--cbm-red);line-height:1.1}
+.rules{list-style:none;padding:0;margin:0 0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rules li{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 10px;font-size:13px;line-height:1.3;color:var(--muted)}
+.rules b{display:block;font-size:24px;font-weight:800;color:var(--gold);line-height:1.1;margin-bottom:2px}
 
-label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:8px}
 input[type=text]{
   width:100%;font:inherit;font-size:16px; /* 16px: evita lo zoom automatico di iOS */
-  min-height:52px;padding:12px 14px;border:1px solid #cfc8c2;border-radius:0;background:#fff;color:var(--cbm-ink);
+  min-height:54px;padding:12px 16px;border:2px solid transparent;border-radius:var(--radius);
+  background:#fff;color:var(--ink);
   -webkit-appearance:none;appearance:none;
 }
-input[type=text]:focus{outline:2px solid var(--cbm-navy);outline-offset:1px}
-.err{color:var(--cbm-red);font-size:13px;min-height:18px;margin:6px 0 8px}
+input[type=text]::placeholder{color:#8C7A7E}
+input[type=text]:focus{outline:3px solid var(--gold);outline-offset:2px}
+input[aria-invalid=true]{border-color:var(--gold)}
+.err{font-size:14px;font-weight:600;min-height:21px;margin:6px 0 8px}
 
 .btn{
-  appearance:none;border:0;border-radius:0;cursor:pointer;
-  background:var(--cbm-red);color:#fff;font-weight:700;font-size:16px;
-  min-height:54px;padding:14px 20px;width:100%;transition:background .2s;
+  appearance:none;border:0;border-radius:var(--radius);cursor:pointer;
+  background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:16px;letter-spacing:.01em;
+  min-height:54px;padding:14px 20px;width:100%;transition:background .15s,transform .1s;
 }
-.btn:active{background:var(--cbm-red-dark)}
-.btn:focus-visible{outline:3px solid var(--cbm-navy);outline-offset:2px}
-.btn.ghost{background:transparent;color:var(--cbm-navy);box-shadow:inset 0 0 0 2px var(--cbm-navy)}
-.btn.ghost:active{background:var(--cbm-navy);color:#fff}
+.btn:active{background:var(--btn-hover);transform:scale(.99)}
+.btn:focus-visible,.answer:focus-visible,.link:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:active{background:var(--ghost-hover)}
 .row{display:flex;flex-direction:column;gap:10px}
 
-/* ---------- Gioco ---------- */
-.hud{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cbm-navy)}
-.hud .score{color:var(--cbm-red);font-variant-numeric:tabular-nums}
-.steps{display:flex;gap:3px;margin-bottom:12px}
-.steps i{flex:1;height:5px;background:var(--cbm-line)}
+/* ---------- Pannello (gioco e risultato) ---------- */
+.panel{background:var(--panel);color:var(--text);border-radius:20px;padding:18px var(--pad) 20px;box-shadow:0 24px 48px -24px rgba(40,0,8,.7)}
+
+/* ---------- La domanda ---------- */
+.hud{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;font-weight:700}
+.hud .count{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hud .clock{font-size:22px;font-weight:800}
+.hud.low .clock{color:var(--ko)}
+.timer{height:8px;border-radius:4px;background:var(--line);margin-bottom:8px;overflow:hidden}
+.timer > div{height:100%;width:100%;border-radius:4px;background:var(--gold);transform-origin:left;will-change:transform}
+.hud.low + .timer > div{background:var(--ko)}
+.steps{display:flex;gap:3px;margin-bottom:18px}
+.steps i{flex:1;height:4px;border-radius:2px;background:var(--line)}
 .steps i.ok{background:var(--ok)}
 .steps i.ko{background:var(--ko)}
-.steps i.now{background:var(--cbm-navy)}
+.steps i.now{background:var(--ink)}
 
-.timer{height:12px;background:var(--cbm-line);margin-bottom:4px;overflow:hidden}
-.timer > div{height:100%;width:100%;background:var(--gold);transform-origin:left;will-change:transform}
-.timer.low > div{background:var(--cbm-red)}
-.timer-label{font-size:12px;color:#6b6f72;text-align:right;margin-bottom:10px;font-variant-numeric:tabular-nums}
-
-.question{font-size:19px;font-weight:700;line-height:1.3;color:var(--cbm-ink);margin:0 0 14px}
+.question{font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:0 0 16px}
 .answers{display:grid;gap:8px;grid-template-columns:1fr}
 .answer{
-  appearance:none;border:2px solid var(--cbm-line);border-radius:0;background:#fff;cursor:pointer;
+  appearance:none;border:1.5px solid var(--line);border-radius:var(--radius);background:#fff;cursor:pointer;
   display:flex;align-items:center;gap:12px;text-align:left;width:100%;
-  min-height:56px;padding:10px 12px;font-size:16px;line-height:1.25;color:var(--cbm-ink);
+  min-height:56px;padding:10px 14px;font-size:16px;font-weight:500;line-height:1.25;color:var(--text);
   transition:border-color .15s,background .15s,transform .1s;
   user-select:none;-webkit-user-select:none;
 }
-.answer .k{
-  flex:none;width:32px;height:32px;display:grid;place-items:center;
-  background:var(--cbm-navy);color:#fff;font-weight:700;font-size:14px;
-}
-.answer:active:not(:disabled){border-color:var(--cbm-navy);transform:scale(.985)}
-.answer:focus-visible{outline:3px solid var(--cbm-navy);outline-offset:2px}
+.answer .k{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--red);color:var(--gold);font-weight:700;font-size:14px}
+.answer .t{flex:1}
+.answer .mark{flex:none;font-weight:800;font-size:18px;width:20px;text-align:center}
+.answer:active:not(:disabled){border-color:var(--red);transform:scale(.99)}
 .answer:disabled{cursor:default;opacity:.5}
-.answer.right{border-color:var(--ok);background:#EAF6EF;opacity:1}
-.answer.right .k{background:var(--ok)}
-.answer.wrong{border-color:var(--ko);background:#FBEBEC;opacity:1;animation:shake .3s}
-.answer.wrong .k{background:var(--ko)}
+.answer.right{border-color:var(--ok);background:#E6F5EC;opacity:1}
+.answer.right .k{background:var(--ok);color:#fff}
+.answer.right .mark{color:var(--ok)}
+.answer.wrong{border-color:var(--ko);background:#FCE8EB;opacity:1;animation:shake .3s}
+.answer.wrong .mark{color:var(--ko)}
 @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 
-.feedback{margin-top:12px;padding:12px 14px;background:var(--cbm-cream);border-left:4px solid var(--cbm-navy);display:none;font-size:14px;line-height:1.45}
-.feedback.show{display:block;animation:rise .25s ease both}
-.feedback strong{display:block;margin-bottom:2px;font-size:15px}
+.feedback{margin-top:12px;padding:12px 14px;border-radius:var(--radius);background:var(--card);border-left:4px solid var(--line);display:none;font-size:15px;line-height:1.45;color:var(--muted)}
+.feedback.show{display:block}
+.feedback strong{display:block;margin-bottom:2px;font-size:16px;color:var(--text)}
 .feedback.good{border-color:var(--ok)}
 .feedback.bad{border-color:var(--ko)}
-.feedback .pts{color:var(--cbm-red);font-weight:900}
 
 /* "Avanti" resta agganciato al fondo dello schermo: sempre raggiungibile col pollice */
 .next{display:none}
 .next.show{
   display:block;position:sticky;bottom:0;z-index:5;
   margin:12px calc(var(--pad) * -1) -20px;
-  padding:10px var(--pad) calc(12px + var(--sab));
-  background:linear-gradient(180deg,rgba(255,255,255,0),#fff 28%);
+  padding:14px var(--pad) calc(14px + var(--sab));
+  border-radius:0 0 20px 20px;
+  background:linear-gradient(180deg,rgba(255,249,240,0),var(--panel) 30%);
 }
 
 /* ---------- Risultato ---------- */
-.result-score{font-size:64px;font-weight:900;line-height:1;color:var(--cbm-red);margin:2px 0;font-variant-numeric:tabular-nums}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0 16px}
-.stats div{background:var(--cbm-cream);padding:10px 4px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#6b6f72}
-.stats b{display:block;font-size:18px;color:var(--cbm-navy);letter-spacing:0;font-variant-numeric:tabular-nums}
-.banner{padding:12px 14px;font-weight:700;margin-bottom:14px;font-size:15px;line-height:1.35}
-.banner.win{background:var(--gold);color:var(--cbm-navy)}
-.banner.no{background:var(--cbm-cream);color:var(--cbm-ink);font-weight:400}
+.result{text-align:center;margin-bottom:22px}
+.result h2{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:4px 0 6px}
+.result-score{font-size:clamp(64px,22vw,104px);font-weight:800;line-height:1;letter-spacing:-.03em}
+.result-score small{font-size:.5em;font-weight:700;color:var(--muted);letter-spacing:0}
+.result .muted{margin:4px 0 16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.stats div{background:var(--card);border-radius:var(--radius);padding:12px 8px;font-size:13px;color:var(--muted)}
+.stats b{display:block;font-size:26px;font-weight:800;color:var(--accent);line-height:1.15}
+.banner{padding:12px 14px;border-radius:var(--radius);font-size:15px;line-height:1.4;text-align:left}
+.banner.win{background:var(--gold);color:var(--ink);font-weight:700}
+.banner.no{background:var(--card);color:var(--muted)}
 
-/* ---------- Classifica (3 colonne su mobile, dettagli sotto al nome) ---------- */
-.board{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums;table-layout:fixed}
-.board th{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6b6f72;text-align:left;padding:8px 6px;border-bottom:2px solid var(--cbm-navy)}
-.board td{padding:10px 6px;border-bottom:1px solid var(--cbm-line);vertical-align:middle}
-.board .num{text-align:right}
-.board .pos{width:42px;font-weight:900;color:var(--cbm-navy)}
-.board .pts{width:64px}
-.board .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.board .sub{display:block;font-size:12px;font-weight:400;color:#6b6f72}
-.board .wide{display:none}
-.board tr.winner .pos span{display:inline-grid;place-items:center;width:28px;height:28px;background:var(--gold);color:var(--cbm-navy)}
-.board tr.winner td{font-weight:700}
-.board tr.me td{background:#FBEBEC}
-.board tr.cut td{border-bottom:2px dashed var(--cbm-red)}
-.empty{padding:20px 14px;text-align:center;background:var(--cbm-cream);color:#6b6f72;font-size:14px}
-.board-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:22px 0 8px}
-.board-head h2{margin:0}
-.link{background:none;border:0;padding:10px 0 10px 10px;color:#6b6f72;font-size:12px;text-decoration:underline;cursor:pointer}
+/* ---------- Classifica ---------- */
+.board-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--red);color:#fff;border-radius:10px;padding:4px 6px 4px 14px;margin:22px 0 8px}
+.board-head h2{margin:0;font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.link{background:none;border:0;border-radius:6px;padding:10px 8px;color:#F3D6DA;font-size:12px;text-decoration:underline;cursor:pointer}
+.link:focus-visible{outline-color:#fff}
+.board{width:100%;border-collapse:separate;border-spacing:0 4px;font-size:15px;table-layout:fixed}
+.board th{font-size:11px;font-weight:600;color:var(--muted);text-align:left;padding:4px 10px}
+.board td{padding:11px 10px;background:var(--card);vertical-align:middle}
+.board td:first-child{border-radius:8px 0 0 8px}
+.board td:last-child{border-radius:0 8px 8px 0}
+.board .r{text-align:right}
+.board .pos{width:46px;font-weight:700;color:var(--muted)}
+.board .cor{width:64px}
+.board .tim{width:68px}
+.board td.tim{font-weight:700;color:var(--accent)}
+.board .name{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.board tr.winner .pos{color:var(--accent)}
+.board tr.first td{background:#FBE3AE}
+.board tr.me td,.board tr.me td.pos{background:var(--red);color:#fff}
+.board tr.sep td{background:none;padding:2px 10px;font-size:12px;color:var(--muted);text-align:center}
+.board tr.sep.cut td{color:var(--accent);font-weight:600}
+.empty{padding:22px 14px;text-align:center;border-radius:var(--radius);background:var(--card);color:var(--muted);font-size:15px}
+.board-note{margin:10px 0 0}
 
-footer{background:var(--cbm-grey);color:#cfcfcf;font-size:11px;padding:12px var(--pad) calc(12px + var(--sab));text-align:center}
+footer{color:var(--muted);font-size:12px;padding:12px var(--pad) calc(12px + var(--sab));text-align:center;border-top:1px solid var(--line)}
 
-/* ================= TELEFONI GRANDI / ORIZZONTALE (≥480px) ================= */
+/* ================= TELEFONI GRANDI (≥480px) ================= */
 @media (min-width:480px){
-  .brand img{height:36px}
-  .tag{font-size:11px;padding:7px 10px}
-  .title{font-size:32px}
+  .brand img{height:42px}
   .row{flex-direction:row}
   .row .btn{flex:1 1 0}
 }
 
 /* ================= TABLET (≥640px) ================= */
 @media (min-width:640px){
-  :root{--hero-h:210px;--pad:28px}
-  body.playing{--hero-h:110px}
-  .site-header{padding-top:14px;padding-bottom:14px}
-  .brand img{height:44px}
-  .tag{font-size:12px;padding:8px 12px}
-  .stage{padding:28px 20px 48px}
-  body.playing .stage{padding-top:24px}
-  .eyebrow{font-size:13px}
-  .title{font-size:40px;margin-bottom:22px;max-width:none}
-  .title b{display:inline}
-  .card{border-top-width:5px;padding:30px var(--pad) 32px}
-  h2{font-size:22px}
-  .muted{font-size:14px}
-  .rules{grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 22px}
-  .rules li{display:block;text-align:center;padding:14px 12px;font-size:13px}
-  .rules b{display:block;font-size:26px;margin-bottom:4px}
-  .question{font-size:23px;margin-bottom:18px;min-height:2.6em}
-  .answers{grid-template-columns:1fr 1fr;gap:10px}
-  .answer{padding:14px}
-  .feedback{font-size:15px;padding:14px 16px}
-  .next.show{position:static;margin:14px 0 0;padding:0;background:none}
-  .result-score{font-size:88px}
-  .stats{gap:10px;margin:18px 0 22px}
-  .stats div{font-size:12px;padding:12px}
-  .stats b{font-size:22px}
-  .board .wide{display:table-cell;width:84px}
-  .board .sub{display:none}
-  .board th{font-size:11px;padding:8px 10px}
-  .board td{padding:11px 10px}
-  .board .pts{width:76px}
-  .btn{width:auto}
-  .btn.block{width:100%}
+  :root{--pad:28px}
+  .site-header{padding-top:12px;padding-bottom:12px}
+  .brand img{height:46px}
+  .wordmark{font-size:15px}
+  .stage{padding-top:44px;padding-bottom:56px;display:flex}
+  .wrap{width:100%;margin:auto} /* centrato in altezza sui tablet, se c'è spazio */
+  .stage::before{right:-100px;top:-120px;width:720px;height:720px}
+  body[data-screen="s-game"] .stage{padding-top:28px}
+  .pulse{height:48px;margin:18px 0 22px}
+  .lead{font-size:19px;margin-bottom:26px}
+  .rules{gap:12px;margin-bottom:30px}
+  .rules li{padding:16px;font-size:14px}
+  .rules b{font-size:30px}
+  .panel{padding:28px var(--pad) 30px}
+  .hud .count{font-size:14px}
+  .hud .clock{font-size:26px}
+  .question{font-size:26px;margin-bottom:22px}
+  .answer{min-height:64px;padding:14px 16px;font-size:18px}
+  .answer .k{width:34px;height:34px}
+  .feedback{font-size:16px;padding:14px 16px}
+  .next.show{position:static;margin:16px 0 0;padding:0;background:none}
+  .board{font-size:16px}
+  .board .cor{width:84px}
+  .board .tim{width:84px}
 }
 
 /* hover solo dove esiste un puntatore vero: niente stati "appiccicati" al tocco */
 @media (hover:hover){
-  .btn:hover{background:var(--cbm-red-dark)}
-  .btn.ghost:hover{background:var(--cbm-navy);color:#fff}
-  .answer:hover:not(:disabled){border-color:var(--cbm-navy)}
+  .btn:hover{background:var(--btn-hover)}
+  .btn.ghost:hover{background:var(--ghost-hover)}
+  .answer:hover:not(:disabled){border-color:var(--red)}
+  .link:hover{color:#fff}
 }
 /* telefono in orizzontale: risposte su due colonne per stare in altezza */
 @media (orientation:landscape) and (max-height:480px){
   .answers{grid-template-columns:1fr 1fr}
   .answer{min-height:48px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .pulse path{stroke-dashoffset:0}
+}
 </style>
 </head>
-<body>
+<body data-screen="s-start">
 
 <header class="site-header">
   <a class="brand" href="https://www.policlinicocampusbiomedico.it/" target="_blank" rel="noopener">
     <img id="logo" alt="Fondazione Policlinico Universitario Campus Bio-Medico">
     <div class="brand-fallback" id="logoFallback">Fondazione<span>Policlinico Universitario</span><span>Campus Bio-Medico</span></div>
   </a>
+  <div class="wordmark" aria-hidden="true">Cuore<span>Giallorosso</span></div>
 </header>
 
 <main class="stage">
   <div class="wrap">
-    <p class="eyebrow">Il minigioco del Campus</p>
-    <h1 class="title">Quanto ne sai <b>della Roma?</b></h1>
 
-    <div class="card">
-
-      <!-- START -->
-      <section class="screen active" id="s-start">
-        <h2>Mettiti alla prova</h2>
-        <p>Rispondi alle domande sulla storia giallorossa. Conta quante ne azzecchi <em>e</em> quanto sei veloce: i primi in classifica vincono.</p>
-        <ul class="rules">
-          <li><b id="r-n">10</b>domande a risposta multipla</li>
-          <li><b id="r-t">15″</b>di tempo per ogni domanda</li>
-          <li><b id="r-w">Top 3</b>in classifica vincono</li>
-        </ul>
-        <form id="startForm" novalidate>
-          <label for="nick">Il tuo nome in classifica</label>
-          <input type="text" id="nick" maxlength="20" autocomplete="nickname" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Es. Francesco10">
-          <div class="err" id="nickErr" role="alert"></div>
-          <div class="row">
-            <button class="btn" type="submit">Inizia il quiz</button>
-            <button class="btn ghost" type="button" id="toBoard">Guarda la classifica</button>
-          </div>
-        </form>
-        <p class="muted" style="margin-top:16px">Punteggio: 100 punti per ogni risposta esatta + fino a 100 punti bonus in base alla velocità. A parità di punti vince chi ha impiegato meno tempo.</p>
-      </section>
-
-      <!-- GAME -->
-      <section class="screen" id="s-game">
-        <div class="hud"><span id="qCount">Domanda 1 / 10</span><span class="score"><span id="liveScore">0</span> pt</span></div>
-        <div class="steps" id="steps" aria-hidden="true"></div>
-        <div class="timer" id="timer"><div id="timerBar"></div></div>
-        <div class="timer-label"><span id="timerText">15,0</span> s</div>
-        <p class="question" id="question"></p>
-        <div class="answers" id="answers"></div>
-        <div class="feedback" id="feedback" aria-live="polite"></div>
-        <div class="next" id="nextWrap"><button class="btn block" id="nextBtn" type="button">Avanti</button></div>
-      </section>
-
-      <!-- RESULT + BOARD -->
-      <section class="screen" id="s-end">
-        <div id="resultBlock">
-          <h2 id="endTitle">Fischio finale!</h2>
-          <div class="result-score" id="endScore">0</div>
-          <p class="muted">punti</p>
-          <div class="stats">
-            <div><b id="stCorrect">0/10</b>Esatte</div>
-            <div><b id="stTime">0,0 s</b>Tempo</div>
-            <div><b id="stRank">–</b>Posizione</div>
-          </div>
-          <div class="banner" id="banner"></div>
+    <!-- ACCESSO -->
+    <section class="screen active" id="s-start">
+      <div class="pill">The Quiz Experience</div>
+      <h1 class="title">Cuore <span>Giallorosso</span></h1>
+      <svg class="pulse" viewBox="0 0 320 40" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" vector-effect="non-scaling-stroke" d="M0 24H196l7-5 6 5h8l7-20 10 34 8-22 5 8H320"/>
+      </svg>
+      <p class="lead">Quanto ne sai della Roma? In classifica conta <b>quante ne azzecchi</b>; a parità di risposte esatte passa avanti <b>chi è stato più veloce</b>.</p>
+      <ul class="rules">
+        <li><b id="r-n">12</b>domande</li>
+        <li><b id="r-t">15″</b>per rispondere</li>
+        <li><b id="r-w">Top 10</b>premiati</li>
+      </ul>
+      <form id="startForm" novalidate>
+        <label for="nick">Il tuo nickname in classifica</label>
+        <input type="text" id="nick" maxlength="20" autocomplete="nickname" autocapitalize="words" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Es. Lupa_17" aria-describedby="nickErr">
+        <div class="err" id="nickErr" role="alert"></div>
+        <div class="row">
+          <button class="btn" type="submit">Inizia la sfida</button>
+          <button class="btn ghost" type="button" id="toBoard">Guarda la classifica</button>
         </div>
-        <div class="board-head">
-          <h2>Classifica</h2>
-          <button class="link" id="resetBoard" type="button">Azzera (test)</button>
-        </div>
-        <div id="boardWrap"></div>
-        <div class="row" style="margin-top:22px">
-          <button class="btn" id="again" type="button">Gioca ancora</button>
-          <button class="btn ghost" id="home" type="button">Torna all'inizio</button>
-        </div>
-      </section>
+      </form>
+    </section>
 
-    </div>
+    <!-- LA DOMANDA -->
+    <section class="screen panel" id="s-game">
+      <div class="hud" id="hud">
+        <span class="count num" id="qCount">Domanda 01 / 12</span>
+        <span class="clock num" id="timerText" role="timer" aria-label="Tempo rimasto">00:15</span>
+      </div>
+      <div class="timer"><div id="timerBar"></div></div>
+      <div class="steps" id="steps" aria-hidden="true"></div>
+      <p class="question" id="question"></p>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="next" id="nextWrap"><button class="btn" id="nextBtn" type="button">Avanti</button></div>
+    </section>
+
+    <!-- RISULTATO + CLASSIFICA -->
+    <section class="screen panel" id="s-end">
+      <div class="result" id="resultBlock">
+        <h2 id="endTitle">Sfida completata</h2>
+        <div class="result-score num" id="endScore">0 <small>/ 12</small></div>
+        <p class="muted">risposte esatte</p>
+        <div class="stats">
+          <div><b class="num" id="stTime">00:00</b>Tempo totale</div>
+          <div><b class="num" id="stRank">–</b>Posizione</div>
+        </div>
+        <div class="banner" id="banner"></div>
+      </div>
+      <div class="row">
+        <button class="btn" id="again" type="button">Gioca ancora</button>
+        <button class="btn ghost" id="home" type="button">Cambia giocatore</button>
+      </div>
+      <div class="board-head">
+        <h2>Classifica live</h2>
+        <button class="link" id="resetBoard" type="button">Azzera (test)</button>
+      </div>
+      <div id="boardWrap"></div>
+    </section>
+
   </div>
 </main>
 
-<footer>Prototipo dimostrativo – la classifica è salvata solo su questo dispositivo.</footer>
+<footer>Prototipo dimostrativo: la classifica è salvata solo su questo dispositivo.</footer>
 
 <script>
 /* ===================== CONFIGURAZIONE ===================== */
 const CONFIG = {
-  QUESTIONS_PER_GAME: 10,     // domande estratte a caso dal pool
+  QUESTIONS_PER_GAME: 12,     // domande estratte a caso dal pool
   TIME_PER_QUESTION: 15,      // secondi
-  BASE_POINTS: 100,           // punti per risposta esatta
-  MAX_TIME_BONUS: 100,        // bonus massimo per risposta istantanea
-  WINNERS: 3,                 // quanti in classifica "vincono"
-  BOARD_SIZE: 10,             // righe mostrate in classifica
-  STORAGE_KEY: 'cbm-quiz-roma-board-v1',
+  WINNERS: 10,                // quanti in classifica vengono premiati
+  BOARD_SIZE: 15,             // righe mostrate in classifica
+  STORAGE_KEY: 'cbm-quiz-roma-board-v2',
   LOGO_URL: 'https://admin.policlinicocampusbiomedico.it/wp-content/uploads/2023/06/logo-fondazione@2x.png'
 };
 
@@ -424,8 +445,10 @@ const POOL = [
 /* ===================== UTIL ===================== */
 const $ = id => document.getElementById(id);
 const shuffle = arr => { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
-const fmtSec = s => s.toFixed(1).replace('.',',');
+const pad2 = n => String(n).padStart(2,'0');
+const fmtClock = s => { const t=Math.round(s); return pad2(Math.floor(t/60))+':'+pad2(t%60); };
 const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEYS = 'ABCD';
 
 /* Classifica: localStorage con fallback in memoria */
 let memBoard = [];
@@ -437,7 +460,8 @@ function saveBoard(b){
   memBoard = b;
   try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(b)); }catch(e){}
 }
-const sortBoard = b => b.sort((x,y)=> y.score-x.score || x.time-y.time || x.at-y.at);
+/* più risposte esatte, poi meno tempo, poi chi ha giocato prima */
+const sortBoard = b => b.sort((x,y)=> y.correct-x.correct || x.time-y.time || x.at-y.at);
 
 /* ===================== STATO ===================== */
 let S = null;      // partita corrente
@@ -446,13 +470,13 @@ let lastEntryId = null;
 
 function show(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active', s.id===id));
-  document.body.classList.toggle('playing', id==='s-game');
+  document.body.dataset.screen = id;
   window.scrollTo(0,0);
 }
 
 /* ===================== AVVIO ===================== */
 (function init(){
-  $('r-n').textContent = CONFIG.QUESTIONS_PER_GAME;
+  $('r-n').textContent = Math.min(CONFIG.QUESTIONS_PER_GAME, POOL.length);
   $('r-t').textContent = CONFIG.TIME_PER_QUESTION + '″';
   $('r-w').textContent = 'Top ' + CONFIG.WINNERS;
   const logo = $('logo');
@@ -463,21 +487,24 @@ function show(id){
 $('startForm').addEventListener('submit', e=>{
   e.preventDefault();
   const name = $('nick').value.trim();
-  if(name.length < 2){ $('nickErr').textContent = 'Inserisci un nome di almeno 2 caratteri.'; $('nick').focus(); return; }
-  $('nickErr').textContent = '';
+  const bad = name.length < 2;
+  $('nick').setAttribute('aria-invalid', bad);
+  $('nickErr').textContent = bad ? 'Scrivi un nickname di almeno 2 caratteri.' : '';
+  if(bad){ $('nick').focus(); return; }
   $('nick').blur();
   startGame(name);
 });
-$('toBoard').addEventListener('click', ()=>{ $('resultBlock').style.display='none'; renderBoard(); show('s-end'); });
-$('again').addEventListener('click', ()=>{ const n = S ? S.name : $('nick').value.trim(); n.length>=2 ? startGame(n) : show('s-start'); });
-$('home').addEventListener('click', ()=>show('s-start'));
+$('toBoard').addEventListener('click', ()=>showEnd(false));
+$('again').addEventListener('click', ()=>startGame(S.name));
+$('home').addEventListener('click', ()=>{ S = null; $('nick').value = ''; show('s-start'); });
 $('resetBoard').addEventListener('click', ()=>{ saveBoard([]); lastEntryId=null; renderBoard(); });
 $('nextBtn').addEventListener('click', nextQuestion);
 
 document.addEventListener('keydown', e=>{
   if(!$('s-game').classList.contains('active') || !S) return;
-  if(!S.locked && /^[1-4]$/.test(e.key)){
-    const btn = $('answers').children[+e.key-1]; if(btn) btn.click();
+  const k = '1234'.indexOf(e.key) >= 0 ? +e.key-1 : KEYS.indexOf(e.key.toUpperCase());
+  if(!S.locked && k >= 0 && e.key.length === 1){
+    const btn = $('answers').children[k]; if(btn) btn.click();
   } else if(S.locked && (e.key==='Enter' || e.key===' ')){
     e.preventDefault(); nextQuestion();
   }
@@ -488,10 +515,8 @@ function startGame(name){
   S = {
     name,
     questions: shuffle(POOL).slice(0, Math.min(CONFIG.QUESTIONS_PER_GAME, POOL.length)),
-    i: 0, score: 0, correct: 0, time: 0, results: [], locked: false, t0: 0
+    i: 0, correct: 0, time: 0, results: [], locked: false, t0: 0
   };
-  $('resultBlock').style.display='';
-  $('liveScore').textContent = '0';
   show('s-game');
   renderQuestion();
 }
@@ -507,7 +532,7 @@ function renderSteps(){
 function renderQuestion(){
   const item = S.questions[S.i];
   S.locked = false;
-  $('qCount').textContent = `Domanda ${S.i+1} / ${S.questions.length}`;
+  $('qCount').textContent = `Domanda ${pad2(S.i+1)} / ${pad2(S.questions.length)}`;
   $('question').textContent = item.q;
   renderSteps();
 
@@ -516,14 +541,14 @@ function renderQuestion(){
   options.forEach((o,k)=>{
     const b = document.createElement('button');
     b.type='button'; b.className='answer'; b.dataset.right = o.right ? '1' : '';
-    b.innerHTML = `<span class="k">${k+1}</span><span>${esc(o.text)}</span>`;
+    b.innerHTML = `<span class="k">${KEYS[k]}</span><span class="t">${esc(o.text)}</span><span class="mark" aria-hidden="true"></span>`;
     b.addEventListener('click', ()=>answer(b));
     box.appendChild(b);
   });
 
   $('feedback').className='feedback'; $('feedback').innerHTML='';
   $('nextWrap').classList.remove('show');
-  $('timer').classList.remove('low');
+  $('hud').classList.remove('low');
 
   window.scrollTo(0,0);
   S.t0 = performance.now();
@@ -535,8 +560,8 @@ function tick(){
   const elapsed = (performance.now() - S.t0)/1000;
   const left = Math.max(0, CONFIG.TIME_PER_QUESTION - elapsed);
   $('timerBar').style.transform = `scaleX(${left/CONFIG.TIME_PER_QUESTION})`;
-  $('timerText').textContent = fmtSec(left);
-  $('timer').classList.toggle('low', left <= 5);
+  $('timerText').textContent = '00:' + pad2(Math.ceil(left));
+  $('hud').classList.toggle('low', left <= 5);
   if(left <= 0){ answer(null); return; }
   raf = requestAnimationFrame(tick);
 }
@@ -549,29 +574,21 @@ function answer(btn){
   const elapsed = Math.min(CONFIG.TIME_PER_QUESTION, (performance.now() - S.t0)/1000);
   const item = S.questions[S.i];
   const right = !!(btn && btn.dataset.right);
-  let pts = 0;
 
-  if(right){
-    const bonus = Math.round(CONFIG.MAX_TIME_BONUS * (1 - elapsed/CONFIG.TIME_PER_QUESTION));
-    pts = CONFIG.BASE_POINTS + bonus;
-    S.correct++;
-  }
-  S.score += pts;
+  if(right) S.correct++;
   S.time += elapsed;
   S.results[S.i] = right;
 
   [...$('answers').children].forEach(b=>{
     b.disabled = true;
-    if(b.dataset.right) b.classList.add('right');
-    else if(b===btn) b.classList.add('wrong');
+    if(b.dataset.right){ b.classList.add('right'); b.querySelector('.mark').textContent = '✓'; }
+    else if(b===btn){ b.classList.add('wrong'); b.querySelector('.mark').textContent = '✕'; }
   });
 
   const fb = $('feedback');
   fb.className = 'feedback show ' + (right ? 'good' : 'bad');
-  const head = right ? `Esatto! <span class="pts">+${pts} punti</span>` : (btn ? 'Sbagliato!' : 'Tempo scaduto!');
-  fb.innerHTML = `<strong>${head}</strong>${esc(item.f)}`;
+  fb.innerHTML = `<strong>${right ? 'Esatto!' : btn ? 'Sbagliato' : 'Tempo scaduto'}</strong>${esc(item.f)}`;
 
-  $('liveScore').textContent = S.score;
   renderSteps();
   $('nextBtn').textContent = S.i === S.questions.length-1 ? 'Vedi il risultato' : 'Avanti';
   $('nextWrap').classList.add('show');
@@ -587,27 +604,35 @@ function nextQuestion(){
 
 /* ===================== FINE PARTITA ===================== */
 function endGame(){
-  const entry = { id: Date.now()+'-'+Math.random().toString(36).slice(2,7), name:S.name, score:S.score, correct:S.correct, total:S.questions.length, time:Math.round(S.time*10)/10, at:Date.now() };
+  const total = S.questions.length;
+  const entry = { id: Date.now()+'-'+Math.random().toString(36).slice(2,7), name:S.name, correct:S.correct, total, time:Math.round(S.time*10)/10, at:Date.now() };
   const board = sortBoard([...loadBoard(), entry]).slice(0,100);
   saveBoard(board);
   lastEntryId = entry.id;
   const rank = board.findIndex(e=>e.id===entry.id) + 1;
 
-  $('endTitle').textContent = S.correct === S.questions.length ? 'Partita perfetta!' : S.correct >= S.questions.length*0.7 ? 'Grande prestazione!' : 'Fischio finale!';
-  $('endScore').textContent = S.score;
-  $('stCorrect').textContent = `${S.correct}/${S.questions.length}`;
-  $('stTime').textContent = fmtSec(S.time) + ' s';
-  $('stRank').textContent = rank ? rank + 'º' : '–';
+  $('endTitle').textContent = S.correct === total ? 'Partita perfetta' : S.correct >= total*0.7 ? 'Grande prestazione' : 'Sfida completata';
+  $('endScore').innerHTML = `${S.correct} <small>/ ${total}</small>`;
+  $('stTime').textContent = fmtClock(S.time);
+  $('stRank').textContent = rank ? '#' + pad2(rank) : '–';
 
   const ban = $('banner');
   if(rank && rank <= CONFIG.WINNERS){
     ban.className='banner win';
-    ban.textContent = `Sei ${rank}º: in questo momento sei tra i primi ${CONFIG.WINNERS} che vincono!`;
+    ban.textContent = `Sei ${rank}º: in questo momento sei tra i ${CONFIG.WINNERS} premiati. Daje!`;
   } else {
+    const last = board[CONFIG.WINNERS-1];
     ban.className='banner no';
-    const cut = board[CONFIG.WINNERS-1];
-    ban.textContent = cut ? `Per entrare tra i primi ${CONFIG.WINNERS} servono più di ${cut.score} punti. Riprova!` : 'Riprova per migliorare il tuo punteggio!';
+    ban.textContent = `Il ${CONFIG.WINNERS}º ha fatto ${last.correct}/${last.total} in ${fmtClock(last.time)}. Riprova per superarlo.`;
   }
+  showEnd(true);
+}
+
+/* withResult = false: solo classifica, aperta dalla schermata iniziale */
+function showEnd(withResult){
+  $('resultBlock').hidden = !withResult;
+  $('again').hidden = !withResult;
+  $('home').textContent = withResult ? 'Cambia giocatore' : 'Torna all\'inizio';
   renderBoard();
   show('s-end');
 }
@@ -615,20 +640,22 @@ function endGame(){
 function renderBoard(){
   const board = sortBoard(loadBoard());
   const wrap = $('boardWrap');
-  if(!board.length){ wrap.innerHTML = '<div class="empty">Nessun punteggio ancora. Sii il primo a entrare in classifica!</div>'; return; }
+  if(!board.length){ wrap.innerHTML = '<div class="empty">Ancora nessuno in classifica. Gioca tu per primo.</div>'; return; }
 
   let rows = board.slice(0, CONFIG.BOARD_SIZE).map((e,k)=>rowHtml(e,k+1)).join('');
   const myIdx = board.findIndex(e=>e.id===lastEntryId);
-  if(myIdx >= CONFIG.BOARD_SIZE) rows += `<tr><td colspan="5" style="text-align:center;color:#6b6f72;padding:4px">…</td></tr>` + rowHtml(board[myIdx], myIdx+1);
+  if(myIdx >= CONFIG.BOARD_SIZE) rows += `<tr class="sep"><td colspan="4">…</td></tr>` + rowHtml(board[myIdx], myIdx+1, true);
 
-  wrap.innerHTML = `<table class="board">
-    <thead><tr><th class="pos">#</th><th>Giocatore</th><th class="num wide">Esatte</th><th class="num wide">Tempo</th><th class="num pts">Punti</th></tr></thead>
+  wrap.innerHTML = `<table class="board num">
+    <thead><tr><th class="pos">#</th><th>Nickname</th><th class="r cor">Esatte</th><th class="r tim">Tempo</th></tr></thead>
     <tbody>${rows}</tbody></table>
-    <p class="muted" style="margin-top:10px">I primi ${CONFIG.WINNERS} (evidenziati) vincono. A parità di punti conta il tempo totale.</p>`;
+    <p class="muted board-note">A parità di risposte esatte conta il tempo totale.</p>`;
 }
-function rowHtml(e,pos){
-  const cls = [pos<=CONFIG.WINNERS?'winner':'', e.id===lastEntryId?'me':'', pos===CONFIG.WINNERS?'cut':''].join(' ').trim();
-  return `<tr class="${cls}"><td class="pos"><span>${pos}</span></td><td class="name">${esc(e.name)}<span class="sub">${e.correct}/${e.total} esatte · ${fmtSec(e.time)} s</span></td><td class="num wide">${e.correct}/${e.total}</td><td class="num wide">${fmtSec(e.time)} s</td><td class="num pts"><b>${e.score}</b></td></tr>`;
+function rowHtml(e,pos,noCut){
+  const cls = [pos<=CONFIG.WINNERS?'winner':'', pos===1?'first':'', e.id===lastEntryId?'me':''].join(' ').trim();
+  const row = `<tr class="${cls}"><td class="pos">${pad2(pos)}</td><td class="name">${esc(e.name)}</td><td class="r cor">${e.correct}/${e.total}</td><td class="r tim">${fmtClock(e.time)}</td></tr>`;
+  /* dopo l'ultimo premiato, una riga segna dove finisce la zona premi */
+  return !noCut && pos === CONFIG.WINNERS + 1 ? `<tr class="sep cut"><td colspan="4">fin qui la zona premi</td></tr>` + row : row;
 }
 </script>
 </body>
