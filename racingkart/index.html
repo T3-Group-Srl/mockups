@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Racingkart – Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700;1,800&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F5;font-family:Poppins,system-ui,sans-serif;color:#18181B}
+a{color:#B8380A}a:hover{color:#8A2A06}
+*{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.disp{font-family:'Barlow Condensed',Poppins,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+.topbar{background:#000;color:#D4D4D8;font-size:12px}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;min-height:36px;padding-top:6px;padding-bottom:6px}
+.topbar a{color:#fff;text-decoration:none}
+.tb-item{display:inline-flex;align-items:center;gap:6px}
+.header{background:#0B0B0C;color:#fff}
+.hrow{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding-top:18px;padding-bottom:18px}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#fff;flex:0 0 auto}
+.logo:hover{color:#fff}
+.logo-img{display:block;height:auto;max-width:100%}
+.logo-word{display:flex;flex-direction:column;line-height:1}
+.logo-k{font-size:34px}
+.logo-v{font-size:11px;font-weight:600;letter-spacing:.42em;color:#FF7A45;margin-top:3px;padding-left:2px}
+.logo-n{font-size:10px;color:#A1A1AA;margin-top:4px;letter-spacing:.04em}
+.search{flex:1 1 320px;display:flex;min-width:0}
+.search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.search input{flex:1;min-width:0;height:48px;border:0;padding:0 16px;font:inherit;font-size:14px;border-radius:6px 0 0 6px;color:#18181B}
+.search button{width:56px;height:48px;border:0;background:#D9430F;color:#fff;border-radius:0 6px 6px 0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.hbtns{display:flex;gap:10px;flex:0 0 auto}
+.hbtn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 16px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.hbtn.dark{background:#27272A;color:#fff}.hbtn.dark:hover{background:#3F3F46;color:#fff}
+.hbtn.red{background:#D9430F;color:#fff;position:relative}.hbtn.red:hover{background:#B8380A;color:#fff}
+.badge-n{position:absolute;top:4px;left:26px;background:#fff;color:#B8380A;font-size:10px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding-bottom:18px}
+.nav a{display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border-radius:4px;background:#27272A;color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.nav a:hover{background:#D9430F;color:#fff}
+.checker{height:44px;background:repeating-conic-gradient(#0B0B0C 0 25%,#FFFFFF 0 50%) 0 0/22px 22px;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 45%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 45%,transparent 100%)}
+.layout{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;padding-top:8px;padding-bottom:56px}
+.side{flex:1 1 260px;max-width:300px;display:flex;flex-direction:column;gap:20px}
+.main{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:40px}
+.box{background:#111113;border-radius:8px;overflow:hidden}
+.box h2{margin:0;background:#D9430F;color:#fff;font-size:16px;font-weight:700;padding:14px 20px}
+.box ul{list-style:none;margin:0;padding:12px 0}
+.box li a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 20px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.01em}
+.box li a:hover{background:#27272A;color:#fff}
+.box li a span.pl{width:18px;height:18px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.sec-h h2{margin:0;font-size:34px;line-height:1}
+.sec-h a{font-size:14px;font-weight:500;text-decoration:none;color:#18181B;display:inline-flex;gap:6px;align-items:center}
+.sec-h a:hover{color:#B8380A}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #E4E4E7;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .15s,border-color .15s}
+.card:hover{border-color:#D4D4D8;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.c-img{position:relative;display:block;aspect-ratio:1/1;background:#fff;padding:14px}
+.c-img img{width:100%;height:100%;object-fit:contain;display:block}
+.c-badge{position:absolute;top:10px;left:10px;display:flex;gap:6px}
+.b-off{background:#D9430F;color:#fff;font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px}
+.b-new{background:#111113;color:#fff;font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px}
+.wish{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:1px solid #E4E4E7;background:#fff;color:#3F3F46;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.wish:hover{color:#D9430F;border-color:#D9430F}
+.c-body{padding:4px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.c-title{font-size:14px;font-weight:600;line-height:1.35;color:#18181B;text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px;text-align:center}
+.c-title:hover{color:#B8380A}
+.c-code{font-size:12px;color:#52525B;text-align:center;margin-top:-4px}
+.avail{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:4px}
+.avail-l{font-size:12px;font-weight:600;text-align:center}
+.bar{height:6px;border-radius:3px;background:#E4E4E7;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px}
+.lvl-ok .avail-l{color:#15803D}.lvl-ok .bar i{width:100%;background:#22A04B}
+.lvl-low .avail-l{color:#C2410C}.lvl-low .bar i{width:45%;background:#F59E0B}
+.lvl-last .avail-l{color:#B8380A}.lvl-last .bar i{width:14%;background:#D9430F}
+.lvl-order .avail-l{color:#52525B}.lvl-order .bar i{width:0}
+.price{display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap}
+.p-now{font-size:19px;font-weight:700;color:#D9430F}
+.p-old{font-size:13px;color:#71717A;text-decoration:line-through}
+.p-tax{font-size:11px;color:#52525B;width:100%;text-align:center;margin-top:-6px}
+.c-act{display:flex;gap:8px}
+.qty{display:flex;align-items:center;border:1px solid #D4D4D8;border-radius:4px;height:44px}
+.qty button{width:30px;height:42px;border:0;background:none;cursor:pointer;color:#3F3F46;font-size:16px}
+.qty span{width:24px;text-align:center;font-size:14px}
+.cart-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;border:0;border-radius:4px;background:#D9430F;color:#fff;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none}
+.cart-btn:hover{background:#B8380A;color:#fff}
+.opt-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:4px;background:#111113;color:#fff;font-weight:600;font-size:14px;text-decoration:none}
+.opt-btn:hover{background:#3F3F46;color:#fff}
+.hero{display:flex;flex-wrap:wrap;border-radius:10px;overflow:hidden;background:#0B0B0C;min-height:400px}
+.hero-txt{flex:1 1 360px;padding:44px 44px 36px;color:#fff;display:flex;flex-direction:column;gap:16px;justify-content:center;position:relative}
+.hero-img{flex:1 1 360px;background:#fff;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.hero-img img{width:100%;max-width:420px;aspect-ratio:1/1;object-fit:contain}
+.eyebrow{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;background:#D9430F;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:600;border:1px solid #3F3F46;color:#E4E4E7;padding:4px 10px;border-radius:999px}
+.dots{display:flex;gap:8px;margin-top:8px}
+.dots button{width:28px;height:4px;border:0;border-radius:2px;background:#3F3F46;padding:0;cursor:pointer}
+.dots button.on{background:#FF7A45}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.tile{border-radius:10px;padding:22px 22px;display:flex;gap:16px;align-items:center;min-height:120px;text-decoration:none}
+.tile .ic{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.tile b{display:block;font-size:22px;line-height:1.05}
+.tile small{display:block;font-size:13px;margin-top:4px}
+.t-dark{background:#111113;color:#fff}.t-dark .ic{background:#27272A;color:#FF7A45}.t-dark small{color:#D4D4D8}
+.t-red{background:#D9430F;color:#fff}.t-red .ic{background:rgba(0,0,0,.18);color:#fff}.t-red small{color:#fff}
+.t-light{background:#fff;color:#18181B;border:1px solid #E4E4E7}.t-light .ic{background:#FFF0E8;color:#D9430F}.t-light small{color:#52525B}
+a.tile:hover{filter:brightness(1.06)}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.cat{background:#fff;border:1px solid #E4E4E7;border-radius:8px;overflow:hidden;text-decoration:none;color:#18181B;display:flex;flex-direction:column}
+.cat:hover{border-color:#D9430F;color:#18181B}
+.cat-i{aspect-ratio:4/3;padding:10px;display:flex;align-items:center;justify-content:center;background:#fff}
+.cat-i img{width:100%;height:100%;object-fit:contain}
+.cat-n{background:#111113;color:#fff;font-size:13px;font-weight:600;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;text-transform:uppercase}
+.cat:hover .cat-n{background:#D9430F}
+.network{border-radius:10px;background:#111113;color:#fff;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:28px 32px;position:relative;overflow:hidden}
+.network::after{content:"";position:absolute;right:-40px;top:0;bottom:0;width:240px;background:repeating-conic-gradient(#1F1F22 0 25%,transparent 0 50%) 0 0/20px 20px;transform:skewX(-14deg);opacity:.9}
+.network > *{position:relative;z-index:1}
+.stats{display:flex;gap:32px;flex-wrap:wrap}
+.stat b{display:block;font-size:40px;line-height:1;color:#fff}
+.stat span{font-size:13px;color:#D4D4D8}
+.brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.brand{background:#fff;border:1px solid #E4E4E7;border-radius:8px;height:72px;display:flex;align-items:center;justify-content:center;padding:12px}
+.brand img{max-width:100%;max-height:44px;object-fit:contain;filter:grayscale(1);opacity:.8;transition:filter .15s,opacity .15s}
+.brand:hover img{filter:none;opacity:1}
+.store{background:#0B0B0C;color:#fff}
+.store .wrap{display:flex;flex-wrap:wrap;gap:32px;padding-top:56px;padding-bottom:56px}
+.store-l{flex:1 1 380px;display:flex;flex-direction:column;gap:18px}
+.store-r{flex:1 1 380px;min-height:280px;border-radius:10px;background:#18181B;border:1px dashed #52525B;display:flex;align-items:center;justify-content:center;color:#A1A1AA;font-size:14px;text-align:center;padding:24px}
+.ph{background:#27272A;color:#FDE68A;border-radius:4px;padding:1px 6px;font-size:.92em;white-space:nowrap}
+.srow{display:flex;gap:14px;align-items:flex-start}
+.srow .ic{width:40px;height:40px;border-radius:8px;background:#27272A;color:#FF7A45;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.srow b{display:block;font-size:14px}.srow span{font-size:14px;color:#D4D4D8}
+.btn-out{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:6px;border:1px solid #52525B;color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.btn-out:hover{border-color:#fff;color:#fff}
+.btn-red{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:6px;background:#D9430F;color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+.btn-red:hover{background:#B8380A;color:#fff}
+.footer{background:#000;color:#D4D4D8;font-size:14px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;padding-top:48px;padding-bottom:36px}
+.footer h3{margin:0 0 14px;color:#fff;font-size:15px}
+.footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.footer a{color:#D4D4D8;text-decoration:none}.footer a:hover{color:#fff}
+.fbot{border-top:1px solid #27272A;padding-top:18px;padding-bottom:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:#A1A1AA}
+.rk{border-radius:10px;background:#111113;color:#fff;overflow:hidden;position:relative}
+.rk::before{content:"";position:absolute;right:-60px;top:0;width:300px;height:100%;background:repeating-conic-gradient(#1F1F22 0 25%,transparent 0 50%) 0 0/22px 22px;transform:skewX(-14deg);pointer-events:none}
+.rk-top{position:relative;display:flex;flex-wrap:wrap;gap:28px 40px;align-items:center;justify-content:space-between;padding:36px 36px 28px}
+.rk-txt{flex:1 1 380px;max-width:560px;display:flex;flex-direction:column;gap:14px}
+.rk-serv{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:1px solid #27272A}
+.rk-s{display:flex;align-items:center;gap:10px;padding:16px 18px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;border-right:1px solid #27272A;background:#0B0B0C}
+.rk-s svg{color:#FF7A45;flex:0 0 auto}
+.rk-s:hover{background:#D9430F;color:#fff}.rk-s:hover svg{color:#fff}
+.ks-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #3F3F46;border-radius:999px;padding:6px 12px;font-size:12px;color:#E4E4E7}
+@media (max-width:760px){
+ .wrap{padding:0 16px}
+ .side{order:2;max-width:none}
+ .hero-txt{padding:28px 22px}
+ .sec-h h2{font-size:28px}
+ .hbtns{width:100%}.hbtns .hbtn{flex:1;justify-content:center}
+ .logo-k{font-size:30px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .c-body{padding:4px 10px 12px}
+ .qty{display:none}
+ .network{padding:24px 20px}
+}
+</style>
+<script src="assets/runtime.js" defer></script>
+</head>
+<body>
+<template id="dc-tpl">
+<div style="min-height: 100vh; display: flex; flex-direction: column">
+
+<!-- TOP BAR -->
+<div class="topbar">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+<span class="tb-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF7A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Spedizione gratuita in Italia da 50 €</span>
+<span class="tb-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF7A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M4 9v11h16V9"></path><path d="M9 20v-6h6v6"></path></svg>Ritiro gratuito in officina a Bergamo</span>
+</div>
+<div style="display: flex; gap: 16px; align-items: center">
+<span class="tb-item">Assistenza <a href="tel:+390350770457" style="font-weight: 600">035 077 0457</a></span>
+<a href="#" aria-label="Lingua: Italiano" style="font-weight: 600">IT</a>
+<a href="#" aria-label="Switch to English" style="color: #A1A1AA">EN</a>
+</div>
+</div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+<div class="wrap">
+<div class="hrow">
+<a href="index.html" class="logo" aria-label="Racingkart – home">
+<img src="img/racingkart-logo-white.png" alt="Racingkart" class="logo-img" width="268" height="60">
+</a>
+<form class="search" role="search" onSubmit="{{noSubmit}}">
+<label for="q">Cerca un prodotto</label>
+<input id="q" type="search" placeholder="Cerca tra oltre 12.000 articoli: codice, modello, brand…">
+<button type="submit" aria-label="Cerca"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+</form>
+<div class="hbtns">
+<a href="#" class="hbtn dark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>Accedi</a>
+<a href="#" class="hbtn red" aria-label="Carrello: {{cartCount}} articoli, {{cartTotal}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg><span class="badge-n">{{cartCount}}</span>{{cartTotal}}</a>
+</div>
+</div>
+<nav class="nav" aria-label="Sezioni">
+<a href="#novita"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.8 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"></path></svg>Nuovi arrivi</a>
+<a href="categoria.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12l-8 8-9-9V3h8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Offerte speciali</a>
+<a href="#brand">Brand</a>
+<a href="chi-siamo.html#officina"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"></path></svg>Officina e servizi</a>
+<a href="chi-siamo.html">Chi siamo</a>
+</nav>
+</div>
+</header>
+<div class="checker" aria-hidden="true"></div>
+
+<!-- CORPO -->
+<div class="wrap" style="width: 100%">
+<div class="layout">
+
+<aside class="side" aria-label="Catalogo">
+<div class="box">
+<h2>Ricambi e accessori</h2>
+<ul>
+<sc-for list="{{sideCats}}" as="c" hint-placeholder-count="12">
+<li><a href="categoria.html">{{c}}<span class="pl" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="#111" stroke-width="2"></path></svg></span></a></li>
+</sc-for>
+</ul>
+</div>
+<div class="box">
+<h2>Acquista per brand</h2>
+<ul>
+<sc-for list="{{sideBrands}}" as="b" hint-placeholder-count="12">
+<li><a href="categoria.html">{{b}}<span class="pl" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="#111" stroke-width="2"></path></svg></span></a></li>
+</sc-for>
+</ul>
+</div>
+<div class="box">
+<h2>Racingkart</h2>
+<ul>
+<li><a href="chi-siamo.html">Chi siamo</a></li>
+<li><a href="chi-siamo.html#officina">Officina e servizi</a></li>
+<li><a href="chi-siamo.html#team">Team corse</a></li>
+<li><a href="#negozio">Contatti</a></li>
+</ul>
+</div>
+</aside>
+
+<main class="main">
+
+<!-- HERO -->
+<section class="hero" aria-label="In evidenza">
+<div class="hero-txt">
+<span class="eyebrow">Nuovo arrivo · Caschi</span>
+<div class="disp" style="font-size: 64px; line-height: .92">Schuberth<br><span style="color: #FF7A45">SP1 Carbon</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D4D4D8; max-width: 440px">Il casco in carbonio con sistema SDL (Schuberth Dual Locking) e apertura a due stadi, nato dall’esperienza Schuberth nel motorsport.</p>
+<div class="chips"><span class="chip">FIA 8859-2024</span><span class="chip">FIA 8878-2024</span><span class="chip">Snell SA2025</span><span class="chip">Snell K2025</span></div>
+<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 4px"><span style="font-size: 30px; font-weight: 700">1.650,00 €</span><span style="font-size: 13px; color: #A1A1AA">IVA esclusa</span></div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap"><a href="prodotto.html" class="btn-red">Scopri il casco<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="categoria.html" class="btn-out">Tutti i caschi</a></div>
+<div class="dots" role="group" aria-label="Slide"><button class="on" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button></div>
+</div>
+<div class="hero-img">
+<img src="img/g171258_1.webp" alt="Casco Schuberth SP1 Carbon">
+</div>
+</section>
+
+<!-- TILES -->
+<section class="tiles" aria-label="Servizi">
+<div class="tile t-red">
+<span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h12v9H2z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="6" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
+<span><b class="disp">Spedizione gratuita</b><small>In tutta Italia per ordini da 50 €</small></span>
+</div>
+<div class="tile t-dark">
+<span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M4 9v11h16V9"></path><path d="M9 20v-6h6v6"></path></svg></span>
+<span><b class="disp">Officina a Bergamo</b><small>Ordina online, ritira e monta da noi</small></span>
+</div>
+<div class="tile t-light">
+<span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"></path><path d="M3 8v8l9 5 9-5V8"></path><path d="M12 13v8"></path></svg></span>
+<span><b class="disp">Oltre 12.000 articoli</b><small>Ricambi, motori, caschi e abbigliamento</small></span>
+</div>
+</section>
+
+<!-- IN EVIDENZA -->
+<section aria-labelledby="h-evid">
+<div class="sec-h"><h2 id="h-evid" class="disp">Articoli in evidenza</h2><a href="categoria.html">Vedi tutte le offerte<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="grid">
+<sc-for list="{{featured}}" as="p" hint-placeholder-count="8">
+<article class="card">
+<a href="prodotto.html" class="c-img" aria-label="{{p.title}}">
+<img src="{{p.img}}" alt="{{p.title}}">
+<span class="c-badge"><sc-if value="{{p.off}}" hint-placeholder-val="{{false}}"><span class="b-off">{{p.off}}</span></sc-if><sc-if value="{{p.isNew}}" hint-placeholder-val="{{false}}"><span class="b-new">NUOVO</span></sc-if></span>
+</a>
+<button class="wish" aria-label="Aggiungi alla wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9.2C1.8 7.6 4 4.5 7.2 4.5c2 0 3.3 1 4.8 2.8 1.5-1.8 2.8-2.8 4.8-2.8 3.2 0 5.4 3.1 4.2 6.3C19 15.6 12 20 12 20z"></path></svg></button>
+<div class="c-body">
+<a href="prodotto.html" class="c-title">{{p.title}}</a>
+<sc-if value="{{p.code}}" hint-placeholder-val="{{true}}"><div class="c-code">Cod. {{p.code}}</div></sc-if>
+<div class="avail {{p.lvlClass}}"><span class="avail-l">{{p.lvlLabel}}</span><span class="bar"><i></i></span></div>
+<div class="price"><span class="p-now">{{p.priceTxt}}</span><sc-if value="{{p.regTxt}}" hint-placeholder-val="{{false}}"><span class="p-old">{{p.regTxt}}</span></sc-if><span class="p-tax">{{p.fromTxt}}IVA esclusa</span></div>
+<div class="c-act">
+<sc-if value="{{p.variable}}" hint-placeholder-val="{{false}}"><a href="prodotto.html" class="opt-btn">Scegli {{p.optName}}</a></sc-if>
+<sc-if value="{{p.simple}}" hint-placeholder-val="{{true}}"><div class="qty"><button aria-label="Diminuisci quantità">−</button><span>1</span><button aria-label="Aumenta quantità">+</button></div><button class="cart-btn" onClick="{{p.add}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>Carrello</button></sc-if>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- BRAND RACINGKART -->
+<section class="rk" aria-labelledby="h-rk">
+<div class="rk-top">
+<div class="rk-txt">
+<span class="eyebrow">Chi siamo</span>
+<h2 id="h-rk" class="disp" style="margin: 0; font-size: 44px; line-height: .95">La vostra passione,<br><span style="color: #FF7A45">la nostra passione.</span></h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: #D4D4D8">Racingkart nasce nel 2010 come negozio online, dalla passione per il kart. Oggi è anche un’officina a Bergamo e un team corse: chi ti vende il ricambio sa anche montarlo e metterlo a punto in pista.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px"><a href="chi-siamo.html" class="btn-red">Scopri Racingkart<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a href="chi-siamo.html#officina" class="btn-out">I servizi d’officina</a></div>
+</div>
+<div class="stats">
+<div class="stat"><b class="disp">2010</b><span>online dal</span></div>
+<div class="stat"><b class="disp">Bergamo</b><span>officina kart</span></div>
+<div class="stat"><b class="disp">60cc</b><span>team corse baby</span></div>
+</div>
+</div>
+<div class="rk-serv" aria-label="Servizi d’officina">
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5l7 3 7-3v10l-7 3-7-3"></path></svg>Assistenza pista</a>
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg>Revisione motori</a>
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"></path></svg>Manutenzione telai</a>
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"></path><path d="M6 8l-4 4 4 4M18 8l4 4-4 4"></path></svg>Convergenza laser</a>
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14"></path><path d="M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"></path></svg>Bilance e assetto</a>
+<a href="chi-siamo.html#officina" class="rk-s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle></svg>Cambio gomme</a>
+</div>
+</section>
+
+<!-- CATEGORIE -->
+<section aria-labelledby="h-cat">
+<div class="sec-h"><h2 id="h-cat" class="disp">Compra per categoria</h2></div>
+<div class="cats">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="8">
+<a href="categoria.html" class="cat"><span class="cat-i"><img src="{{c.img}}" alt=""></span><span class="cat-n">{{c.name}}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></a>
+</sc-for>
+</div>
+</section>
+
+<!-- NOVITA -->
+<section id="novita" aria-labelledby="h-new">
+<div class="sec-h"><h2 id="h-new" class="disp">Ultimi arrivi</h2><a href="categoria.html">Vedi tutti i nuovi prodotti<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="grid">
+<sc-for list="{{latest}}" as="p" hint-placeholder-count="4">
+<article class="card">
+<a href="prodotto.html" class="c-img" aria-label="{{p.title}}">
+<img src="{{p.img}}" alt="{{p.title}}">
+<span class="c-badge"><span class="b-new">NUOVO</span></span>
+</a>
+<button class="wish" aria-label="Aggiungi alla wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9.2C1.8 7.6 4 4.5 7.2 4.5c2 0 3.3 1 4.8 2.8 1.5-1.8 2.8-2.8 4.8-2.8 3.2 0 5.4 3.1 4.2 6.3C19 15.6 12 20 12 20z"></path></svg></button>
+<div class="c-body">
+<a href="prodotto.html" class="c-title">{{p.title}}</a>
+<sc-if value="{{p.code}}" hint-placeholder-val="{{true}}"><div class="c-code">Cod. {{p.code}}</div></sc-if>
+<div class="avail {{p.lvlClass}}"><span class="avail-l">{{p.lvlLabel}}</span><span class="bar"><i></i></span></div>
+<div class="price"><span class="p-now">{{p.priceTxt}}</span><span class="p-tax">{{p.fromTxt}}IVA esclusa</span></div>
+<div class="c-act">
+<sc-if value="{{p.variable}}" hint-placeholder-val="{{false}}"><a href="prodotto.html" class="opt-btn">Scegli {{p.optName}}</a></sc-if>
+<sc-if value="{{p.simple}}" hint-placeholder-val="{{true}}"><div class="qty"><button aria-label="Diminuisci quantità">−</button><span>1</span><button aria-label="Aumenta quantità">+</button></div><button class="cart-btn" onClick="{{p.add}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>Carrello</button></sc-if>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- BRAND -->
+<section id="brand" aria-labelledby="h-brand">
+<div class="sec-h"><h2 id="h-brand" class="disp">I nostri brand</h2><a href="categoria.html">Tutti i brand<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<div class="brands">
+<sc-for list="{{logos}}" as="l" hint-placeholder-count="15">
+<a href="categoria.html" class="brand"><img src="{{l.img}}" alt="{{l.name}}"></a>
+</sc-for>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+
+<!-- NEGOZIO -->
+<section id="negozio" class="store" aria-labelledby="h-store">
+<div class="wrap">
+<div class="store-l">
+<span class="eyebrow">Officina e negozio</span>
+<h2 id="h-store" class="disp" style="margin: 0; font-size: 48px; line-height: .95">Racingkart Bergamo</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D4D4D8; max-width: 520px">Ricambi, caschi e abbigliamento kart, con l’officina per montaggio, revisioni e messa a punto. Ordini online e ritiri da noi, senza costi di spedizione.</p>
+<div class="srow"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><span><b>Indirizzo</b><span>Via Giovanni Finazzi 6, 24127 Bergamo (BG)</span></span></div>
+<div class="srow"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><span><b>Orari</b><span><span class="ph">[Giorni e orari di apertura]</span></span></span></div>
+<div class="srow"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><span><b>Telefono</b><span><a href="tel:+390350770457" style="color: #fff">035 077 0457</a></span></span></div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px"><a href="#" class="btn-red">Indicazioni stradali</a><a href="chi-siamo.html#officina" class="btn-out">Servizi d’officina</a></div>
+</div>
+<div class="store-r">Mappa Google dell’officina<br>Via Giovanni Finazzi 6, Bergamo</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="wrap">
+<div class="fgrid">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<a href="index.html" class="logo" aria-label="Racingkart – home"><img src="img/racingkart-logo-white.png" alt="Racingkart" class="logo-img" width="224" height="50"></a>
+<span style="font-size: 13px; line-height: 1.6">La vostra passione, la nostra passione.<br>Officina: Via Giovanni Finazzi 6, 24127 Bergamo<br><span class="ph">[Ragione sociale]</span> · P.IVA <span class="ph">[P.IVA]</span></span>
+</div>
+<div><h3>Negozio</h3><ul><li><a href="categoria.html">Offerte speciali</a></li><li><a href="#novita">Nuovi arrivi</a></li><li><a href="#brand">Brand</a></li><li><a href="categoria.html">Caschi</a></li></ul></div>
+<div><h3>Assistenza</h3><ul><li><a href="#">Spedizioni</a></li><li><a href="#">Ritiro in negozio</a></li><li><a href="#">Resi e rimborsi</a></li><li><a href="#">Contatti</a></li></ul></div>
+<div><h3>Racingkart</h3><ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="chi-siamo.html#officina">Officina e servizi</a></li><li><a href="chi-siamo.html#team">Team corse</a></li><li><a href="chi-siamo.html#contatti">Contatti</a></li></ul></div>
+</div>
+<div class="fbot"><span>© 2026 Racingkart · Tutti i prezzi sono IVA esclusa</span><span><a href="#">Privacy</a> · <a href="#">Cookie</a> · <a href="#">Termini e condizioni</a></span></div>
+</div>
+</footer>
+
+</div>
+</template>
+<div id="dc-root"></div>
+<script type="text/x-dc" data-props='{"$preview":{"width":1440,"height":3900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cartCount: 0, cartTotal: 0 };
+  }
+  fmt(n) {
+    const parts = n.toFixed(2).split('.');
+    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + parts[1] + ' €';
+  }
+  lvl(stock) {
+    if (stock >= 10) return ['lvl-ok', 'Disponibile'];
+    if (stock >= 2) return ['lvl-low', 'Pochi pezzi'];
+    if (stock === 1) return ['lvl-last', 'Ultimo pezzo'];
+    return ['lvl-order', 'Su ordinazione'];
+  }
+  prod(p) {
+    const l = this.lvl(p.stock);
+    const off = p.reg && p.reg > p.price ? '-' + Math.round((1 - p.price / p.reg) * 100) + '%' : '';
+    return {
+      ...p,
+      off,
+      priceTxt: this.fmt(p.price),
+      regTxt: off ? this.fmt(p.reg) : '',
+      fromTxt: p.opt ? 'da · ' : '',
+      lvlClass: l[0],
+      lvlLabel: l[1],
+      variable: !!p.opt,
+      simple: !p.opt,
+      optName: p.opt || '',
+      add: () => this.setState({ cartCount: this.state.cartCount + 1, cartTotal: this.state.cartTotal + p.price })
+    };
+  }
+  renderVals() {
+    const featured = [
+      { title: 'BELL HELMET RS7-K PRO HANS WHITE FIA8859-2024/SA2020', code: 'RS7-K HANS', price: 690, reg: 750, stock: 5, opt: 'taglia', img: 'img/p148476.webp' },
+      { title: 'GUANTI PILOTA OMP KS-X FIA 8877 NERO', code: 'KB0-2751-A01-071', price: 103.5, reg: 115, stock: 15, opt: 'taglia', img: 'img/p148021.webp' },
+      { title: 'TELAIO NUDO KOSMIC OK MERCURY RR 2024', code: '0001.0KH24', price: 1200, reg: 1800, stock: 2, img: 'img/p164444.webp' },
+      { title: 'KIT CONVERGENZA LASER MAGNETICO RIGHETTI RIDOLFI', code: 'KL907', price: 129, reg: 175, stock: 69, img: 'img/p165147.webp' },
+      { title: 'SET PNEUMATICI VEGA XH4-CIK PRIME', code: 'XH4', price: 177, stock: 27, img: 'img/p166819.webp' },
+      { title: 'SILENZIATORE ELTO RACING MT1 2026 OMOLOGA CIK-FIA 039-SE-11', code: '27070.MT1', price: 290, stock: 2, img: 'img/p170339.webp' },
+      { title: 'Casco SCHUBERT SP1 CARBON - FIA 8859-2024, FIA 8878-2024, SNELL SA2025, SNELL K2025', code: 'SP1 CARBON - FIA 8859', price: 1650, stock: 1, opt: 'taglia', isNew: true, img: 'img/p171258.webp' },
+      { title: 'BELL HELMET RS7-K PRO HANS WHITE FIA8859-2024/SA2020 STAMINA ANTRACITE', code: 'RS7-K HANS STAMINA', price: 892.4, reg: 970, stock: 0, opt: 'taglia', img: 'img/p148499.webp' }
+    ].map((p) => this.prod(p));
+    const latest = [
+      { title: 'OLIO FRENI MOTUL RBF 700', code: '111485', price: 24.91, stock: 12, img: 'img/p170739.webp' },
+      { title: 'MOZZO BST L. 53 MM COMPLETO TONY KART', code: '0103.F0CKIT', price: 55, stock: 14, img: 'img/p170273.webp' },
+      { title: 'COLLARE KART ALPINESTARS ADULTO 2026', code: '67410---1', price: 49.5, stock: 13, opt: 'colore e taglia', img: 'img/p170008.webp' },
+      { title: 'Borraccia Racing Mad 56', code: '', price: 20.5, stock: 1, img: 'img/p169827.webp' }
+    ].map((p) => this.prod(p));
+    return {
+      noSubmit: (e) => e.preventDefault(),
+      cartCount: this.state.cartCount,
+      cartTotal: this.fmt(this.state.cartTotal),
+      featured,
+      latest,
+      sideCats: ['Telai', 'Ricambi OTK – Tony Kart', 'Motori', 'Ricambi motore', 'Radiatori New-Line', 'Strumentazioni', 'Pneumatici', 'Lubrificanti e varie', 'Attrezzature', 'Accessori telai', 'Ricambi CRG', 'Ricambi Birel Art', 'Ricambi Parolin', 'Caschi', 'Abbigliamento', 'Sedili e paracostole', 'Cerchi'],
+      sideBrands: ['Tony Kart – OTK', 'CRG', 'Birel Art', 'Kart Republic', 'Parolin', 'KG Kart', 'Righetti Ridolfi', 'IAME', 'Vortex', 'Rotax', 'TM Kart', 'Bell Helmet', 'Arai', 'Stilo', 'Schuberth', 'OMP', 'Alpinestars'],
+      cats: [
+        { name: 'Motori', img: 'img/c-motori.webp' },
+        { name: 'Ricambi motore', img: 'img/c-ricambi.webp' },
+        { name: 'Telai', img: 'img/p164444.webp' },
+        { name: 'Pneumatici', img: 'img/c-gomme.webp' },
+        { name: 'Caschi', img: 'img/p148476.webp' },
+        { name: 'Abbigliamento', img: 'img/p148021.webp' },
+        { name: 'Strumentazioni', img: 'img/c-strum.webp' },
+        { name: 'Radiatori', img: 'img/c-radiatori.webp' }
+      ],
+      logos: [
+        { name: 'OTK Kart Parts', img: 'img/b-ricambiotk.webp' },
+        { name: 'CRG', img: 'img/b-ricambicrg.webp' },
+        { name: 'Birel Art', img: 'img/b-ricambibirelart.webp' },
+        { name: 'Kart Republic', img: 'img/b-ricambikartrepublic.webp' },
+        { name: 'IAME', img: 'img/b-produttoreiamex30ric.webp' },
+        { name: 'Vortex', img: 'img/b-produttorevortexrica.webp' },
+        { name: 'Rotax', img: 'img/b-ricambirotax.webp' },
+        { name: 'Dell’Orto', img: 'img/b-dellortocarburatori.webp' },
+        { name: 'NGK', img: 'img/b-candeleepipettengk.webp' },
+        { name: 'Motul', img: 'img/b-motul.webp' },
+        { name: 'Arai', img: 'img/b-caschiaraiedaccessor.webp' },
+        { name: 'Stilo', img: 'img/b-caschistilo.webp' },
+        { name: 'Schuberth', img: 'img/b-caschischuberth.webp' },
+        { name: 'OMP', img: 'img/b-omp.webp' },
+        { name: 'Alpinestars', img: 'img/b-abbigliamentoalpines.webp' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

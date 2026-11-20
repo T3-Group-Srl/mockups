@@ -9,6 +9,7 @@ Ogni cliente/progetto ha la sua cartella; l'URL da condividere è `https://mocku
 | `nea-ostia-rugby/` | Nea Ostia Rugby — redesign home | https://mockup.t3-group.it/nea-ostia-rugby/ |
 | `sport-municipio-ix/` | Roma Capitale — Sport Municipio IX, sito multipagina | <https://mockup.t3-group.it/sport-municipio-ix/> |
 | `quiz-roma-campus/` | Policlinico Campus Bio-Medico — quiz AS Roma (minigioco) | https://mockup.t3-group.it/quiz-roma-campus/ |
+| `racingkart/` | Racingkart — sito e-commerce stile Mondokart (home, categoria, prodotto, chi siamo) | https://mockup.t3-group.it/racingkart/ |
 
 ## Aggiungere un mockup
 1. Crea una cartella con un nome breve, minuscolo, senza spazi (es. `nome-cliente`).
